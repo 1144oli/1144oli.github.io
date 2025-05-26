@@ -23,6 +23,14 @@ a:hover {
   overflow: hidden;
 }
 
+.ascii-art {
+  font-family: monospace;
+  color: #00ff00;
+  line-height: 1.1;
+  margin-top: 10px;
+}
+
+
 .terminal-bar {
   background: #2b2b2b;
   padding: 0.5rem;
@@ -78,11 +86,9 @@ a:hover {
 }
 
 .neofetch-output {
-  background-color: #111;
-  padding: 1rem;
-  border: 1px solid #333;
+  padding: 0rem;
   color: #00ff00;
-  font-size: 0.9rem;
+  font-size: 1rem;
   overflow-x: auto;
 }
 
