@@ -1,38 +1,63 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
-  <body>
-    <header>
-      <h1>Hi, I'm Oli<h1>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terminal Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="terminal-window">
+    <div class="terminal-bar">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+      <span class="title">oli@archbook: ~</span>
+    </div>
 
-    <section id="about">
-      <h2>About Me</h2>
-      <p>Hi, Im a first year Cyber Security Student.</p>
-    </section>
+    <div class="tabs">
+      <a href="#about" class="tab">about</a>
+      <a href="#projects" class="tab">projects</a>
+      <a href="#contact" class="tab">contact</a>
+    </div>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <p>None</p>
-    </section>
+    <div class="terminal-content">
+      <section id="about">
+        <div class="prompt">$ neofetch</div>
+        <pre class="neofetch-output">
+            oli@archbook
+        -------------------------
+        OS: Arch Linux x86_64
+        Host: ASUS
+        Kernel: 6.5.0-arch1-1
+        Shell: bash 5.1.16
+        Terminal: Web Emulator
+        CPU: Intel i7-12650H
+        GPU: NVIDIA RTX 2050
+        Memory: 16GB
+        -------------------------------
+        </pre>
+      </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-    </section>
+      <section id="projects">
+        <div class="prompt">$ ls ~/projects</div>
+        <div class="response">
+          - <a href="#">personal-website</a><br />
+          - <a href="#">cli-notetaker</a><br />
+          - <a href="#">wifi-fix-script</a>
+        </div>
+      </section>
 
-    <footer>
-      <p>&copy; 2025 Oli</p>
-      <p2> Written in NeoVim BTW</p2>
-    </footer>
-  </body>
+      <section id="contact">
+        <div class="prompt">$ cat ~/contact.txt</div>
+        <div class="response">
+          Email: oli@example.com<br/>
+          GitHub: <a href="https://github.com/yourusername" target="_blank">yourusername</a><br/>
+          LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">yourprofile</a>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
 </html>
 
