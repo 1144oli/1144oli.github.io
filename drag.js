@@ -32,3 +32,42 @@ document.addEventListener("DOMContentLoaded", () => {
     terminal.style.top = `${e.clientY - offsetY}px`;
   });
 });
+
+const kateWindow = document.getElementById('kate-window');
+const kateBar = document.querySelector('#kate-window .terminal-bar');
+
+if (kateWindow && kateBar) {
+    let isKateDragging = false;
+    let kateOffsetX = 0;
+    let kateOffsetY = 0;
+
+    kateBar.style.cursor = "grab";
+    kateWindow.style.position = "absolute";
+
+    kateBar.addEventListener("mousedown", (e) => {
+        isKateDragging = true;
+        kateOffsetX = e.clientX - kateWindow.offsetLeft;
+        kateOffsetY = e.clientY - kateWindow.offsetTop;
+        kateBar.style.cursor = "grabbing";
+    });
+
+    document.addEventListener("mouseup", () => {
+        isKateDragging = false;
+        kateBar.style.cursor = "grab";
+    });
+
+    document.addEventListener("mousemove", (e) => {
+        if (!isKateDragging) return;
+
+        e.preventDefault();
+        kateWindow.style.left = `${e.clientX - kateOffsetX}px`;
+        kateWindow.style.top = `${e.clientY - kateOffsetY}px`;
+    });
+}
+
+document.getElementById('open-kate-btn').onclick = function() {
+    document.getElementById('kate-window').style.display = 'block';
+};
+document.getElementById('kate-close-btn').onclick = function() {
+    document.getElementById('kate-window').style.display = 'none';
+};

@@ -9,16 +9,15 @@
 <body>
   <div class="terminal-window">
     <div class="terminal-bar">
-  <img src="photos/kitty.svg" alt="Kitty Logo" style="height: 24px; vertical-align: middle; margin-right: 8px;">
-  <div class="terminal-bar-center">
-    <span class="title">oli@archbook: ~</span>
-  </div>
-  <div class="terminal-bar-right">
-    <span class="dot green"></span>
-    <span class="dot yellow"></span>
-    <span class="dot red"></span>
-  </div>
-</div>
+      <img src="photos/kitty.svg" alt="Kitty Logo" style="height: 24px; vertical-align: middle; margin-right: 8px;">
+      <div class="terminal-bar-center">
+        <span class="title">oli@archbook: ~</span>
+      </div>
+      <div class="terminal-bar-right">
+        <span class="dot yellow"></span>
+        <span class="dot red" id="close-btn" style="cursor:pointer;"></span>
+      </div>
+    </div>
 
     <div class="terminal-content">
       <section id="about">
@@ -52,16 +51,13 @@
             Uptime: 19 years
             Uni: Sheffileld Hallam University
             Course: Cyber Security with Forensics
-            Terminal: Web Emulator
-            CPU: Intel i7-12650H
-            GPU: NVIDIA RTX 2050
+            Terminal: Kitty
+            Shell: Bash
             Interests: Linux
             -------------------------------
           </pre>
         </div>
       </section>
-
-
       <section id="projects">
         <div class="prompt">$ ls ~/projects</div>
         <div class="response">
@@ -77,12 +73,40 @@
       </section>
     </div>
   </div>
+
+  
+  <div class="kate-window" id="kate-window" style="display:none; position:absolute; top:80px; left:120px; z-index:10;">
+    <div class="terminal-bar" style="background:#3b4252;">
+      <img src="photos/kate-3000px.png" alt="Kate Logo" style="height: 24px; vertical-align: middle; margin-right: 8px;">
+      <div class="terminal-bar-center">
+        <span class="title">oli@archbook: kate</span>
+      </div>
+      <div class="terminal-bar-right">
+        <span class="dot yellow"></span>
+        <span class="dot red" id="kate-close-btn" style="cursor:pointer;"></span>
+      </div>
+    </div>
+    <div class="terminal-content" style="background:#eceff4; color:#2e3440; min-width:400px; min-height:200px;">
+      <div style="padding:16px;">
+        <strong>Todo list:</strong><br>
+        <textarea style="width:100%;height:120px;resize:vertical;font-family:monospace;"></textarea>
+      <script>
+
+        document.getElementById('open-kate-btn').addEventListener('click', function() {
+          document.querySelector('#kate-window textarea').value = "• Finish website\n• Push to GitHub\n• Polish CSS\n• Add more projects";
+        });
+      </script>
+      </div>
+    </div>
+  </div>
+
   <div class="taskbar">
     <div class="taskbar-left">
       <img src="photos/archlogo.png" alt="Arch" class="taskbar-icon" />
       <img src="photos/Dolphin_icon_in_Plasma_5.svg.png" alt="Folder" class="taskbar-icon" />
       <img src="photos/kitty.svg" alt="Terminal" class="taskbar-icon" />
       <img src="photos/png-clipart-neovim-source-code-extensibility-computer-software-github-angle-rectangle-thumbnail.png" alt="NeoVIm" class="taskbar-icon taskbar-active" />
+      <img src="photos/kate-3000px.png" alt="kate" class="taskbar-icon" id="open-kate-btn" style="cursor:pointer;" />
     </div>
     <div class="taskbar-center"></div>
     <div class="taskbar-right">
@@ -91,8 +115,10 @@
       <span class="taskbar-date" id="taskbar-date"></span>
     </div>
   </div>
+
   <script src="taskbar.js"></script>
-<script src="drag.js"></script>
+  <script src="drag.js"></script>
+
 </body>
 </html>
 

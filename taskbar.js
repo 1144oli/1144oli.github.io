@@ -1,15 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Update time and date every second
+    // time
     function updateTimeAndDate() {
         const timeElem = document.getElementById("taskbar-time");
         const dateElem = document.getElementById("taskbar-date");
         if (timeElem && dateElem) {
             const now = new Date();
-            // Format time as HH:MM
             const hours = now.getHours().toString().padStart(2, "0");
             const minutes = now.getMinutes().toString().padStart(2, "0");
-            timeElem.textContent = `${hours}:${minutes}`;
-            // Format date as YYYY-MM-DD
+            const seconds = now.getSeconds().toString().padStart(2, "0");
+            timeElem.textContent = `${hours}:${minutes}:${seconds}`;
             const year = now.getFullYear();
             const month = (now.getMonth() + 1).toString().padStart(2, "0");
             const day = now.getDate().toString().padStart(2, "0");
@@ -19,11 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateTimeAndDate();
     setInterval(updateTimeAndDate, 1000);
-
-    // Handle taskbar icon clicks
     document.querySelectorAll('.taskbar-icon').forEach(icon => {
         icon.addEventListener('click', () => {
-            // Only toggle active state for icons in the left section
             if (icon.closest('.taskbar-left')) {
                 document.querySelectorAll('.taskbar-left .taskbar-icon').forEach(i => i.classList.remove('taskbar-active'));
                 icon.classList.add('taskbar-active');
@@ -35,12 +31,48 @@ document.addEventListener("DOMContentLoaded", () => {
 const terminalIcon = document.querySelector('img[alt="Terminal"].taskbar-icon');
 const terminalWindow = document.querySelector('.terminal-window');
 if (terminalIcon && terminalWindow) {
-    terminalIcon.addEventListener('click', () => {
-        // Show or hide the terminal window without using the 'minimized' class
-        if (terminalWindow.style.display === "none") {
-            terminalWindow.style.display = "";
+    terminalWindow.style.display = "none";
+    terminalWindow.classList.remove('open', 'close');
+
+    function openTerminalWindow() {
+        terminalWindow.style.display = "";
+        terminalWindow.classList.remove('close');
+        void terminalWindow.offsetWidth;
+        terminalWindow.classList.add('open');
+    }
+
+    function closeTerminalWindow() {
+        terminalWindow.classList.remove('open');
+        terminalWindow.classList.add('close');
+        terminalWindow.addEventListener('animationend', function handler(e) {
+            if (e.animationName === 'terminalClose') {
+                terminalWindow.style.display = "none";
+                terminalWindow.removeEventListener('animationend', handler);
+            }
+        });
+    }
+
+    function toggleTerminalWindow() {
+        if (terminalWindow.style.display === "none" || !terminalWindow.classList.contains('open')) {
+            openTerminalWindow();
         } else {
-            terminalWindow.style.display = "none";
+            closeTerminalWindow();
         }
-    });
+    }
+
+    terminalIcon.addEventListener('click', toggleTerminalWindow);
+
+
+    //red dot
+    const redDot = terminalWindow.querySelector('.dot.red');
+    if (redDot) {
+        redDot.addEventListener('click', closeTerminalWindow);
+    }
+
+
+    const closeBtn = document.getElementById('close-btn');
+    if (closeBtn) {
+        closeBtn.onclick = closeTerminalWindow;
+    }
 }
+
