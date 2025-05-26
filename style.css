@@ -111,3 +111,89 @@ a:hover {
   overflow-x: auto;
 }
 
+
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 48px;
+  background: rgba(30, 30, 30, 0.98);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 -2px 12px #00ff0033;
+  z-index: 1000;
+  padding: 0 1.5rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.taskbar-left,
+.taskbar-center,
+.taskbar-right {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.taskbar-left {
+  gap: 0.5rem;
+}
+
+.taskbar-center {
+  flex: 1;
+  justify-content: center;
+}
+
+.taskbar-right {
+  gap: 0.5rem;
+}
+
+.taskbar-icon {
+  width: 28px;
+  height: 28px;
+  margin: 0 2px;
+  border-radius: 10px;
+  background: transparent;
+  transition: background 0.15s, box-shadow 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.taskbar-icon:hover {
+  background: #222;
+  box-shadow: 0 0 6px #00ff0055;
+}
+
+.taskbar-active {
+  box-shadow: 0 0 0 2px #00ff00, 0 0 8px #00ff0055;
+  background: #111;
+}
+
+.taskbar-time,
+.taskbar-date {
+  color: #00ff00;
+  font-size: 1rem;
+  margin-left: 0.7rem;
+  font-family: inherit;
+  letter-spacing: 0.05em;
+  user-select: none;
+}
+
+@media (max-width: 700px) {
+  .taskbar {
+    height: 40px;
+    padding: 0 0.5rem;
+  }
+  .taskbar-icon {
+    width: 22px;
+    height: 22px;
+  }
+  .taskbar-time,
+  .taskbar-date {
+    font-size: 0.9rem;
+    margin-left: 0.4rem;
+  }
+}
