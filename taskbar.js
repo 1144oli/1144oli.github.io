@@ -117,5 +117,87 @@ function makeWindowDraggableAndPersistent(windowSelector, barSelector, storageKe
         document.body.style.userSelect = '';
     });
 }
+
+const kateWindow = document.querySelector('.kate-window');
+const kateIcon = document.querySelector('img[alt="kate"].taskbar-icon');
+const kateCloseBtn = document.getElementById('kate-close-btn');
+
+if (kateWindow) {
+    kateWindow.classList.remove('open', 'close');
+
+    function openKateWindow() {
+        kateWindow.style.display = "";
+        kateWindow.classList.remove('close');
+        void kateWindow.offsetWidth;
+        kateWindow.classList.add('open');
+    }
+
+    function closeKateWindow() {
+        kateWindow.classList.remove('open');
+        kateWindow.classList.add('close');
+        kateWindow.addEventListener('animationend', function handler(e) {
+            if (e.animationName === 'terminalClose') {
+                kateWindow.style.display = "none";
+                kateWindow.removeEventListener('animationend', handler);
+            }
+        });
+    }
+
+    if (kateIcon) {
+        kateIcon.addEventListener('click', openKateWindow);
+    }
+    if (kateCloseBtn) {
+        kateCloseBtn.addEventListener('click', closeKateWindow);
+    }
+}
+
+
 makeWindowDraggableAndPersistent('.terminal-window', '.terminal-bar', 'terminalWindow');
 makeWindowDraggableAndPersistent('.kate-window', '.terminal-bar', 'kateWindow');
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const terminalForm = document.getElementById('terminal-form');
+  const terminalInput = document.getElementById('terminal-input');
+  const terminalHistory = document.getElementById('terminal-history');
+  const commands = {
+    help: 'Available commands: help, about, projects, contact, clear, github',
+    about: `oli@archbook\n-------------------------\nOS: Arch Linux x86_64\nUptime: 19 years\nUni: Sheffileld Hallam University\nCourse: Cyber Security with Forensics\nTerminal: Kitty\nShell: Bash\nInterests: Linux\n-------------------------------`,
+    projects: `- <a href="https://github.com/1144oli/1144oli.github.io" target="_blank">This Website</a>`,
+    contact: `GitHub: <a href="https://github.com/1144oli" target="_blank">1144oli</a>`,
+    clear: '',
+    github: function() {
+      window.open('https://github.com/1144oli', '_blank');
+      return `<a href="https://github.com/1144oli" target="_blank">https://github.com/1144oli</a>`;
+    }
+  };
+
+  if (terminalForm && terminalInput && terminalHistory) {
+    terminalForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const input = terminalInput.value.trim();
+      if (input === '') return;
+      let output = '';
+    if (input === 'clear') {
+    terminalHistory.innerHTML = '';
+    } else if (commands[input]) {
+    let output;
+    if (typeof commands[input] === 'function') {
+        output = commands[input]();
+    } else {
+        output = commands[input];
+    }
+    terminalHistory.innerHTML += `<div><span class="prompt">$</span> ${input}</div><div class="response" style="white-space:pre-line;">${output}</div>`;
+    } else {
+    terminalHistory.innerHTML += `<div><span class="prompt">$</span> ${input}</div><div class="response">Command not found: ${input}</div>`;
+    }
+      terminalInput.value = '';
+      terminalHistory.scrollTop = terminalHistory.scrollHeight;
+    });
+
+    document.getElementById('input-terminal').addEventListener('click', () => {
+      terminalInput.focus();
+    });
+  }
+});

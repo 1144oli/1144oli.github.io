@@ -223,6 +223,8 @@ a:hover {
   overflow: hidden;
   position: absolute;
   z-index: 1001;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
 }
 
 .kate-window .terminal-bar {
@@ -242,6 +244,9 @@ a:hover {
   font-weight: bold;
   font-size: 0.9rem;
   color: white;
+  transition: none;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
 }
 
 .kate-window .terminal-bar-right {
@@ -296,4 +301,21 @@ a:hover {
 .kate-window textarea:focus {
   box-shadow: 0 0 12px #00ff00cc;
   border-color: #33ff33;
+}
+
+.kate-window.open {
+  animation-name: terminalOpen;
+}
+
+.kate-window.close {
+  animation-name: terminalClose;
+}
+
+@keyframes terminalOpen {
+  from { opacity: 0; transform: scale(0.95);}
+  to   { opacity: 1; transform: scale(1);}
+}
+@keyframes terminalClose {
+  from { opacity: 1; transform: scale(1);}
+  to   { opacity: 0; transform: scale(0.95);}
 }

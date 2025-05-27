@@ -71,3 +71,5 @@ document.getElementById('open-kate-btn').onclick = function() {
 document.getElementById('kate-close-btn').onclick = function() {
     document.getElementById('kate-window').style.display = 'none';
 };
+
+
