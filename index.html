@@ -14,10 +14,10 @@
         <span class="title">oli@archbook: ~</span>
       </div>
       <div class="terminal-bar-right">
-        <span class="dot yellow"></span>
+        <span class="dot yellow" id="minimize-btn" style="cursor:pointer;"></span>
         <span class="dot red" id="close-btn" style="cursor:pointer;"></span>
       </div>
-    </div>
+    </div> 
 
     <div class="terminal-content">
       <section id="about">
@@ -86,16 +86,10 @@
         <span class="dot red" id="kate-close-btn" style="cursor:pointer;"></span>
       </div>
     </div>
-    <div class="terminal-content" style="background:#eceff4; color:#2e3440; min-width:400px; min-height:200px;">
+    <div class="terminal-content" style="background:#414142; color:#2e3440; min-width:400px; min-height:200px;">
       <div style="padding:16px;">
         <strong>Todo list:</strong><br>
         <textarea style="width:100%;height:120px;resize:vertical;font-family:monospace;"></textarea>
-      <script>
-
-        document.getElementById('open-kate-btn').addEventListener('click', function() {
-          document.querySelector('#kate-window textarea').value = "• Finish website\n• Push to GitHub\n• Polish CSS\n• Add more projects";
-        });
-      </script>
       </div>
     </div>
   </div>

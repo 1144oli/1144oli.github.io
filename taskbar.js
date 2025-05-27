@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const terminalIcon = document.querySelector('img[alt="Terminal"].taskbar-icon');
 const terminalWindow = document.querySelector('.terminal-window');
 if (terminalIcon && terminalWindow) {
-    terminalWindow.style.display = "none";
+
     terminalWindow.classList.remove('open', 'close');
 
     function openTerminalWindow() {
@@ -76,3 +76,46 @@ if (terminalIcon && terminalWindow) {
     }
 }
 
+
+function makeWindowDraggableAndPersistent(windowSelector, barSelector, storageKey) {
+    const win = document.querySelector(windowSelector);
+    const bar = win?.querySelector(barSelector);
+    if (!win || !bar) return;
+
+    const savedTop = localStorage.getItem(storageKey + 'Top');
+    const savedLeft = localStorage.getItem(storageKey + 'Left');
+    if (savedTop && savedLeft) {
+        win.style.position = 'absolute';
+        win.style.top = savedTop;
+        win.style.left = savedLeft;
+    }
+
+    let offsetX, offsetY, isDragging = false;
+    bar.style.cursor = 'move';
+
+    bar.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        const rect = win.getBoundingClientRect();
+        offsetX = e.clientX - rect.left;
+        offsetY = e.clientY - rect.top;
+        document.body.style.userSelect = 'none';
+    });
+
+    document.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+        win.style.position = 'absolute';
+        win.style.top = (e.clientY - offsetY) + 'px';
+        win.style.left = (e.clientX - offsetX) + 'px';
+    });
+
+    document.addEventListener('mouseup', function() {
+        if (isDragging) {
+            localStorage.setItem(storageKey + 'Top', win.style.top);
+            localStorage.setItem(storageKey + 'Left', win.style.left);
+        }
+        isDragging = false;
+        document.body.style.userSelect = '';
+    });
+}
+makeWindowDraggableAndPersistent('.terminal-window', '.terminal-bar', 'terminalWindow');
+makeWindowDraggableAndPersistent('.kate-window', '.terminal-bar', 'kateWindow');
