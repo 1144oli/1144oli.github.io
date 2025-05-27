@@ -161,17 +161,21 @@ document.addEventListener('DOMContentLoaded', function() {
   const terminalForm = document.getElementById('terminal-form');
   const terminalInput = document.getElementById('terminal-input');
   const terminalHistory = document.getElementById('terminal-history');
-  const commands = {
-    help: 'Available commands: help, about, projects, contact, clear, github',
+const commands = {
+    man: 'Available commands: man, about, projects, contact, clear, github',
     about: `oli@archbook\n-------------------------\nOS: Arch Linux x86_64\nUptime: 19 years\nUni: Sheffileld Hallam University\nCourse: Cyber Security with Forensics\nTerminal: Kitty\nShell: Bash\nInterests: Linux\n-------------------------------`,
     projects: `- <a href="https://github.com/1144oli/1144oli.github.io" target="_blank">This Website</a>`,
     contact: `GitHub: <a href="https://github.com/1144oli" target="_blank">1144oli</a>`,
     clear: '',
     github: function() {
-      window.open('https://github.com/1144oli', '_blank');
-      return `<a href="https://github.com/1144oli" target="_blank">https://github.com/1144oli</a>`;
+        window.open('https://github.com/1144oli', '_blank');
+        return `<a href="https://github.com/1144oli" target="_blank">https://github.com/1144oli</a>`;
+    },
+    "sudo rm -rf /": function() {
+        window.close();
+        return 'System destroyed. Closing tab...';
     }
-  };
+};
 
   if (terminalForm && terminalInput && terminalHistory) {
     terminalForm.addEventListener('submit', function(e) {
