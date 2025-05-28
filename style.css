@@ -99,7 +99,10 @@ a:hover {
 }
 
 
+
+
 .taskbar {
+  box-sizing: border-box;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -108,39 +111,50 @@ a:hover {
   background: rgba(30, 30, 30, 0.98);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   box-shadow: 0 -2px 12px #00ff0033;
   z-index: 1000;
   padding: 0 1.5rem;
   font-family: 'Courier New', Courier, monospace;
-  overflow-x: auto; 
 }
 
-.taskbar-left,
-.taskbar-center,
-.taskbar-right {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  min-width: 0; 
-}
-
-.taskbar-left {
-  gap: 0.5rem;
-}
 
 .taskbar-center {
-  flex: 1;
+  flex: 1 1 auto;
+  display: flex;
   justify-content: center;
-  min-width: 0;
+  min-width: 0;      /* This is correct */
   overflow: hidden;
 }
 
+
 .taskbar-right {
-  gap: 0.5rem;
+  display: flex;
+  align-items: center;
   min-width: 0;
-  overflow: show;
+  gap: 0.5rem;
+  overflow-x: visible;
+  white-space: nowrap;
+  flex-shrink: 0;    /* This is correct */
+  margin-left: auto;
 }
+.taskbar-right .taskbar-icon[alt="Notification"] {
+  filter: brightness(0) saturate(100%) invert(67%) sepia(97%) saturate(749%) hue-rotate(66deg) brightness(102%) contrast(101%);
+}
+
+.taskbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 500px) {
+  .taskbar-date {
+    display: none;
+  }
+}
+
 
 .taskbar-icon {
   width: 28px;
@@ -156,15 +170,22 @@ a:hover {
   flex-shrink: 0;
 }
 
+
+
 .taskbar-icon:hover {
   background: #222;
   box-shadow: 0 0 6px #00ff0055;
 }
 
+
+.taskbar-icon[alt="Notification"]:hover {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
 .taskbar-time,
 .taskbar-date {
   color: #00ff00;
-  font-size: 1rem;
   margin-left: 0rem;
   margin-right: 0rem;
   font-family: inherit;
