@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function isMobileDevice() {
     return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
-
 if (isMobileDevice()) {
-    window.location.href = "mobile.html";
+    document.getElementById('mobile-warning').style.display = 'block';
+    document.body.style.overflow = 'hidden';
 }
