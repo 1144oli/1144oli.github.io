@@ -176,8 +176,45 @@ const commands = {
         return `<a href="https://github.com/1144oli" target="_blank">https://github.com/1144oli</a>`;
     },
     "sudo rm -rf /": function() {
-        window.close();
-        return 'System destroyed. Closing tab...';
+        const overlay = document.createElement('div');
+        overlay.style.position = 'fixed';
+        overlay.style.top = 0;
+        overlay.style.left = 0;
+        overlay.style.width = '100vw';
+        overlay.style.height = '100vh';
+        overlay.style.background = 'black';
+        overlay.style.zIndex = 99999;
+        overlay.style.display = 'flex';
+        overlay.style.alignItems = 'center';
+        overlay.style.justifyContent = 'center';
+        overlay.style.flexDirection = 'column';
+        overlay.style.pointerEvents = 'auto';
+
+        const msg = document.createElement('div');
+        msg.textContent = 'System destroyed. Closing tab... (Press any key or mouse button to cancel)';
+        msg.style.color = 'white';
+        msg.style.fontSize = '1.5em';
+        msg.style.marginBottom = '2em';
+        overlay.appendChild(msg);
+
+        document.body.appendChild(overlay);
+
+        let blackoutTimeout = setTimeout(() => {
+            overlay.remove();
+            window.close();
+        }, 5000);
+
+        function cancelBlackout() {
+            clearTimeout(blackoutTimeout);
+            overlay.remove();
+            window.removeEventListener('keydown', cancelBlackout);
+            window.removeEventListener('mousedown', cancelBlackout);
+        }
+
+        window.addEventListener('keydown', cancelBlackout);
+        window.addEventListener('mousedown', cancelBlackout);
+
+        return 'System destroyed. Closing tab... (Press any key or mouse button to cancel)';
     }
 };
 
@@ -230,3 +267,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// moblie users eugh 
+function isMobileDevice() {
+    return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+if (isMobileDevice()) {
+    window.location.href = "mobile.html";
+}
