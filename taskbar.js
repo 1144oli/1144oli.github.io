@@ -28,6 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+
+
+
+
 const terminalIcon = document.querySelector('img[alt="Terminal"].taskbar-icon');
 const terminalWindow = document.querySelector('.terminal-window');
 if (terminalIcon && terminalWindow) {
@@ -205,3 +209,24 @@ const commands = {
     });
   }
 });
+
+window.addEventListener('beforeunload', () => {
+    localStorage.setItem('terminalWindowOpen', terminalWindow && terminalWindow.classList.contains('open') ? '1' : '0');
+    localStorage.setItem('kateWindowOpen', kateWindow && kateWindow.classList.contains('open') ? '1' : '0');
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('terminalWindowOpen') === '1' && terminalWindow) {
+        terminalWindow.style.display = "";
+        terminalWindow.classList.remove('close');
+        void terminalWindow.offsetWidth;
+        terminalWindow.classList.add('open');
+    }
+    if (localStorage.getItem('kateWindowOpen') === '1' && kateWindow) {
+        kateWindow.style.display = "";
+        kateWindow.classList.remove('close');
+        void kateWindow.offsetWidth;
+        kateWindow.classList.add('open');
+    }
+});
+
