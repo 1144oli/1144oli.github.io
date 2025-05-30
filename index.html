@@ -125,12 +125,37 @@
     </div>
   </div>
 
+
+    <div class="neovim-window" id="neovim-window" style="display:none; position:absolute; top:120px; left:200px; z-index:11;">
+      <div class="terminal-bar" style="background:#1e222a;">
+        <img src="photos/png-clipart-neovim-source-code-extensibility-computer-software-github-angle-rectangle-thumbnail.png" alt="neovim" style="height: 24px; vertical-align: middle; margin-right: 8px;">
+        <div class="terminal-bar-center">
+          <span class="title">oli@archbook: nvim</span>
+        </div>
+        <div class="terminal-bar-right">
+          <span class="dot yellow"></span>
+          <span class="dot red" id="neovim-close-btn" style="cursor:pointer;"></span>
+        </div>
+      </div>
+      <div class="terminal-content" style="background:#1e222a; color:#a9b1d6; min-width:500px; min-height:300px; font-family:monospace; position:relative;">
+        <div style="padding:16px;">
+          <pre id="neovim-editor" style="margin:0; color:#a9b1d6; outline:none; min-height:200px;" tabindex="0"></pre>
+        </div>
+        <div id="neovim-mode-bar" style="position:absolute; left:0; right:0; bottom:28px; background:#282c34; color:#98c379; font-family:monospace; font-size:1em; padding:4px 12px; border-top:1px solid #222;">
+          -- NORMAL --
+        </div>
+        <div id="neovim-command-bar" style="display:none; position:absolute; left:0; right:0; bottom:0; background:#21252b; color:#abb2bf; font-family:monospace; font-size:1em; padding:4px 12px; border-top:1px solid #222;"></div>
+          <span>:</span><input id="neovim-command-input" type="text" style="background:transparent; border:none; color:inherit; font-family:inherit; font-size:1em; outline:none; width:90%;" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+
   <div class="taskbar">
     <div class="taskbar-left">
       <img src="photos/archlogo.png" alt="Arch" class="taskbar-icon" />
       <img src="photos/Dolphin_icon_in_Plasma_5.svg.png" alt="Folder" class="taskbar-icon" />
       <img src="photos/kitty.svg" alt="Terminal" class="taskbar-icon" />
-      <img src="photos/png-clipart-neovim-source-code-extensibility-computer-software-github-angle-rectangle-thumbnail.png" alt="NeoVIm" class="taskbar-icon taskbar-active" />
+      <img src="photos/png-clipart-neovim-source-code-extensibility-computer-software-github-angle-rectangle-thumbnail.png" alt="neovim" class="taskbar-icon taskbar-active" />
       <img src="photos/kate-3000px.png" alt="kate" class="taskbar-icon" id="open-kate-btn" style="cursor:pointer;" />
     </div>
     <div class="taskbar-center"></div>
@@ -143,7 +168,7 @@
 
   <script src="taskbar.js"></script>
   <script src="drag.js"></script>
-
+  <script src="neovim.js"></script>
 </body>
 </html>
 

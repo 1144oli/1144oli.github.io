@@ -275,3 +275,93 @@ if (isMobileDevice()) {
     document.getElementById('mobile-warning').style.display = 'block';
     document.body.style.overflow = 'hidden';
 }
+
+let neovimWindow, neovimIcon, neovimCloseBtn;
+
+document.addEventListener("DOMContentLoaded", () => {
+    neovimWindow = document.querySelector('.neovim-window');
+    neovimIcon = document.querySelector('img[alt="neovim"].taskbar-icon');
+    neovimCloseBtn = document.getElementById('neovim-close-btn');
+
+    if (neovimWindow) {
+        neovimWindow.classList.remove('open', 'close');
+
+        function openNeovimWindow() {
+            neovimWindow.style.display = "";
+            neovimWindow.classList.remove('close');
+            void neovimWindow.offsetWidth;
+            neovimWindow.classList.add('open');
+        }
+
+        function closeNeovimWindow() {
+            neovimWindow.classList.remove('open');
+            neovimWindow.classList.add('close');
+            neovimWindow.addEventListener('animationend', function handler(e) {
+                if (e.animationName === 'terminalClose') {
+                    neovimWindow.style.display = "none";
+                    neovimWindow.removeEventListener('animationend', handler);
+                }
+            });
+        }
+
+        function toggleNeovimWindow() {
+            if (neovimWindow.style.display === "none" || !neovimWindow.classList.contains('open')) {
+                openNeovimWindow();
+            } else {
+                closeNeovimWindow();
+            }
+        }
+
+        if (neovimIcon) {
+            neovimIcon.addEventListener('click', toggleNeovimWindow);
+        }
+        if (neovimCloseBtn) {
+            neovimCloseBtn.addEventListener('click', closeNeovimWindow);
+        }
+        const redDot = neovimWindow.querySelector('.dot.red');
+        if (redDot) {
+            redDot.addEventListener('click', closeNeovimWindow);
+        }
+    }
+
+    makeWindowDraggableAndPersistent('.neovim-window', '.terminal-bar', 'neovimWindow');
+});
+
+window.addEventListener('beforeunload', () => {
+    localStorage.setItem('neovimWindowOpen', neovimWindow && neovimWindow.classList.contains('open') ? '1' : '0');
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('neovimWindowOpen') === '1' && neovimWindow) {
+        neovimWindow.style.display = "";
+        neovimWindow.classList.remove('close');
+        void neovimWindow.offsetWidth;
+        neovimWindow.classList.add('open');
+    }
+});
+
+function bringToFront(win) {
+    const windows = document.querySelectorAll('.terminal-window, .kate-window, .neovim-window');
+    let maxZ = 10;
+    windows.forEach(w => {
+        const z = parseInt(window.getComputedStyle(w).zIndex) || 10;
+        if (z > maxZ) maxZ = z;
+    });
+    win.style.zIndex = maxZ + 1;
+}
+
+[
+    { win: terminalWindow, bar: terminalWindow?.querySelector('.terminal-bar') },
+    { win: kateWindow, bar: kateWindow?.querySelector('.terminal-bar') }
+].forEach(({ win, bar }) => {
+    if (win && bar) {
+        bar.addEventListener('mousedown', () => bringToFront(win));
+    }
+});
+document.addEventListener("DOMContentLoaded", () => {
+    const neovimWin = document.querySelector('.neovim-window');
+    const neovimBar = neovimWin?.querySelector('.terminal-bar');
+    if (neovimWin && neovimBar) {
+        neovimBar.addEventListener('mousedown', () => bringToFront(neovimWin));
+    }
+});

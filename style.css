@@ -15,7 +15,7 @@ a:hover {
 }
 
 .terminal-window {
-  max-width: 900px;
+  max-width: 100000px;
   margin: auto;
   background: #000000;
   border-radius: 6px;
@@ -238,12 +238,12 @@ a:hover {
 
 .kate-window {
   background: #000;
-  color: #33ff33;
+  color: #3633ff;
   border-radius: 6px;
-  box-shadow: 0 0 15px #00ff00;
-  border: 2px solid #00ff00;
+  box-shadow: 0 0 15px #7700ff;
+  border: 2px solid #8400ff;
   font-family: 'Courier New', Courier, monospace;
-  max-width: 900px;
+  max-width: 10000000px;
   min-width: 400px;
   min-height: 220px;
   overflow: hidden;
@@ -261,7 +261,7 @@ a:hover {
   padding: 0.5rem;
   display: flex;
   align-items: center;
-  border-bottom: 1.5px solid #00ff00;
+  border-bottom: 1.5px solid #8c00ff;
   position: relative;
 }
 
@@ -293,7 +293,7 @@ a:hover {
 
 .kate-window .terminal-content {
   background: #000;
-  color: #33ff33;
+  color: #9c33ff;
   min-width: 400px;
   min-height: 180px;
   padding: 1.5rem;
@@ -304,7 +304,7 @@ a:hover {
 }
 
 .kate-window strong {
-  color: #33ff33;
+  color: #ad33ff;
   font-family: inherit;
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
@@ -313,8 +313,8 @@ a:hover {
 
 .kate-window textarea {
   background: #181818;
-  color: #33ff33;
-  border: 1.5px solid #00ff00;
+  color: #33ff70;
+  border: 1.5px solid #b700ff;
   border-radius: 4px;
   font-family: 'Courier New', Courier, monospace;
   font-size: 1rem;
@@ -331,8 +331,8 @@ a:hover {
 }
 
 .kate-window textarea:focus {
-  box-shadow: 0 0 12px #00ff00cc;
-  border-color: #33ff33;
+  box-shadow: 0 0 12px #b700ffcc;
+  border-color: #be33ff;
 }
 
 .kate-window.open {
@@ -350,4 +350,110 @@ a:hover {
 @keyframes terminalClose {
   from { opacity: 1; transform: scale(1);}
   to   { opacity: 0; transform: scale(0.95);}
+}
+
+.neovim-window {
+  background: #1a1b26;
+  color: #a9b1d6;
+  border-radius: 6px;
+  box-shadow: 0 0 15px #7aa2f7;
+  border: 2px solid #7aa2f7;
+  font-family: 'Fira Mono', 'Courier New', Courier, monospace;
+  max-width: 10000000px;
+  min-width: 400px;
+  min-height: 220px;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1002;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  display: flex;
+  flex-direction: column;
+}
+
+.neovim-window .terminal-bar {
+  background: #24283b;
+  color: #7aa2f7;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1.5px solid #7aa2f7;
+  position: relative;
+}
+
+.neovim-window .terminal-bar-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #c0caf5;
+}
+
+.neovim-window .terminal-bar-right {
+  margin-left: auto;
+}
+
+.neovim-window .dot {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 6px;
+}
+.neovim-window .red { background: #f7768e; }
+.neovim-window .yellow { background: #e0af68; }
+
+.neovim-window .terminal-content {
+  background: #1a1b26;
+  color: #a9b1d6;
+  min-width: 400px;
+  min-height: 180px;
+  padding: 1.5rem;
+  font-family: 'Fira Mono', 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  overflow-x: auto;
+}
+
+.neovim-window strong {
+  color: #7aa2f7;
+  font-family: inherit;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.neovim-window textarea {
+  background: #24283b;
+  color: #a9b1d6;
+  border: 1.5px solid #7aa2f7;
+  border-radius: 4px;
+  font-family: 'Fira Mono', 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  outline: none;
+  box-shadow: 0 0 8px #7aa2f755;
+  padding: 10px;
+  width: 100%;
+  min-height: 0px;
+  resize: vertical;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: box-shadow 0.2s;
+  height: 100%;
+}
+
+.neovim-window textarea:focus {
+  box-shadow: 0 0 12px #7aa2f7cc;
+  border-color: #7aa2f7;
+}
+
+.neovim-window.open {
+  animation-name: terminalOpen;
+}
+
+.neovim-window.close {
+  animation-name: terminalClose;
 }
