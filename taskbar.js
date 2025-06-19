@@ -67,18 +67,16 @@ if (terminalIcon && terminalWindow) {
     terminalIcon.addEventListener('click', toggleTerminalWindow);
 
 
-    //red dot
-    const redDot = terminalWindow.querySelector('.dot.red');
-    if (redDot) {
-        redDot.addEventListener('click', closeTerminalWindow);
+        // red dot (close)
+        const redDot = terminalWindow.querySelector('.dot.red');
+        if (redDot) {
+            redDot.addEventListener('click', closeTerminalWindow);
+        }
+        const closeBtn = document.getElementById('close-btn');
+        if (closeBtn) {
+            closeBtn.onclick = closeTerminalWindow;
+        }
     }
-
-
-    const closeBtn = document.getElementById('close-btn');
-    if (closeBtn) {
-        closeBtn.onclick = closeTerminalWindow;
-    }
-}
 
 
 function makeWindowDraggableAndPersistent(windowSelector, barSelector, storageKey) {
@@ -166,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const terminalInput = document.getElementById('terminal-input');
   const terminalHistory = document.getElementById('terminal-history');
 const commands = {
-    man: 'Available commands: man, about, projects, contact, clear, github',
+    man: 'Available commands: man, about, projects, contact, clear, github, uname, whoami, date, echo, neofetch, ls, pwd',
     about: `oli@archbook\n-------------------------\nOS: Arch Linux x86_64\nUptime: 19 years\nUni: Sheffileld Hallam University\nCourse: Cyber Security with Forensics\nTerminal: Kitty\nShell: Bash\nInterests: Linux\n-------------------------------`,
     projects: `- <a href="https://github.com/1144oli/1144oli.github.io" target="_blank">This Website</a>`,
     contact: `GitHub: <a href="https://github.com/1144oli" target="_blank">1144oli</a>`,
@@ -175,6 +173,27 @@ const commands = {
         window.open('https://github.com/1144oli', '_blank');
         return `<a href="https://github.com/1144oli" target="_blank">https://github.com/1144oli</a>`;
     },
+    uname: () => 'Linux archbook 6.6.30-1-lts #1 SMP PREEMPT_DYNAMIC x86_64 GNU/Linux',
+    whoami: () => 'oli',
+    date: () => new Date().toString(),
+    neofetch: () => `
+            oli@archbook
+            --------------
+            OS: Arch Linux x86_64
+            Host: archbook
+            Kernel: 6.6.30-1-lts
+            Age: 19 years
+            Packages: 1337 (pacman)
+            Shell: zsh
+            Terminal: kitty
+            CPU: Intel i7
+            Memory: 16GB
+            --------------
+            <a href="https://github.com/1144oli" target="_blank">1144oli</a>
+    `,
+    ls: () => 'Desktop  Documents  Downloads  Music  Pictures  Videos  projects.md',
+    pwd: () => '/home/oli',
+    help: 'READ THE MAN PAGE!',
     "sudo rm -rf /": function() {
         const overlay = document.createElement('div');
         overlay.style.position = 'fixed';
