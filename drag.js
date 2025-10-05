@@ -9,7 +9,7 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+const chars = '01';
 const fontSize = 14;
 let columns = canvas.width / fontSize;
 let drops = [];
@@ -39,7 +39,6 @@ function drawMatrix() {
         
         ctx.fillText(char, x, y);
 
-        // Reset drop to top randomly
         if (y > canvas.height && Math.random() > 0.975) {
             drops[i] = 0;
         }
