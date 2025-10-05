@@ -1,75 +1,64 @@
+const canvas = document.getElementById('matrix');
+const ctx = canvas.getContext('2d');
 
-document.addEventListener("DOMContentLoaded", () => {
-  const terminal = document.querySelector(".terminal-window");
-  const terminalBar = document.querySelector(".terminal-bar");
-
-  let isDragging = false;
-  let offsetX = 0;
-  let offsetY = 0;
-
-  if (!terminal || !terminalBar) return;
-
-  terminalBar.style.cursor = "grab";
-  terminal.style.position = "absolute";
-
-  terminalBar.addEventListener("mousedown", (e) => {
-    isDragging = true;
-    offsetX = e.clientX - terminal.offsetLeft;
-    offsetY = e.clientY - terminal.offsetTop;
-    terminalBar.style.cursor = "grabbing";
-  });
-
-  document.addEventListener("mouseup", () => {
-    isDragging = false;
-    terminalBar.style.cursor = "grab";
-  });
-
-  document.addEventListener("mousemove", (e) => {
-    if (!isDragging) return;
-
-    e.preventDefault();
-    terminal.style.left = `${e.clientX - offsetX}px`;
-    terminal.style.top = `${e.clientY - offsetY}px`;
-  });
-});
-
-const kateWindow = document.getElementById('kate-window');
-const kateBar = document.querySelector('#kate-window .terminal-bar');
-
-if (kateWindow && kateBar) {
-    let isKateDragging = false;
-    let kateOffsetX = 0;
-    let kateOffsetY = 0;
-
-    kateBar.style.cursor = "grab";
-    kateWindow.style.position = "absolute";
-
-    kateBar.addEventListener("mousedown", (e) => {
-        isKateDragging = true;
-        kateOffsetX = e.clientX - kateWindow.offsetLeft;
-        kateOffsetY = e.clientY - kateWindow.offsetTop;
-        kateBar.style.cursor = "grabbing";
-    });
-
-    document.addEventListener("mouseup", () => {
-        isKateDragging = false;
-        kateBar.style.cursor = "grab";
-    });
-
-    document.addEventListener("mousemove", (e) => {
-        if (!isKateDragging) return;
-
-        e.preventDefault();
-        kateWindow.style.left = `${e.clientX - kateOffsetX}px`;
-        kateWindow.style.top = `${e.clientY - kateOffsetY}px`;
-    });
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 }
 
-document.getElementById('open-kate-btn').onclick = function() {
-    document.getElementById('kate-window').style.display = 'block';
-};
-document.getElementById('kate-close-btn').onclick = function() {
-    document.getElementById('kate-window').style.display = 'none';
-};
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
 
+const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+const fontSize = 14;
+let columns = canvas.width / fontSize;
+let drops = [];
 
+function initDrops() {
+    columns = canvas.width / fontSize;
+    drops = [];
+    for (let i = 0; i < columns; i++) {
+        drops[i] = Math.random() * -100;
+    }
+}
+
+initDrops();
+window.addEventListener('resize', initDrops);
+
+function drawMatrix() {
+    ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#ff69b4';
+    ctx.font = fontSize + 'px monospace';
+
+    for (let i = 0; i < drops.length; i++) {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
+        
+        ctx.fillText(char, x, y);
+
+        // Reset drop to top randomly
+        if (y > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+        }
+        
+        drops[i]++;
+    }
+}
+
+setInterval(drawMatrix, 35);
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
