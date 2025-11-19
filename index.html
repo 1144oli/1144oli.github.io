@@ -15,7 +15,6 @@
             <p class="typing-effect">University Student | Linux Enjoyer | Homelabbing Enthusiast</p>
             <nav>
                 <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
 		<a href="blog.html">Blogs</a>	
                 <a href="#contact">Contact</a>
             </nav>
@@ -23,39 +22,48 @@
 
         <section id="about" class="section">
             <h2>About Me</h2>
-		<p>Hi! I'm Oli, a 19 year old from the UK &#x1f1ec;&#x1f1e7; currently doing a Cyber Security with Forensics degree in Sheffield.  	</p>
+		<p>Hi! I'm Oli, a 19 year old from the UK &#x1f1ec;&#x1f1e7; currently studying for a Cyber Security with Forensics degree at Sheffield Hallam University.  	</p>
         </section>
         <section id="projects" class="section">
             <h2>Projects</h2>
             <div class="project-grid">
-                <a href="https://github.com/1144oli/1144oli.github.io" class="project-card" target="_blank" rel="noopener noreferrer">
-                    <h3>[01] Portfolio</h3>
-                    <p>The website you're on now!</p>
-                    <div class="tags">
-                        <span class="tag">Self-Hosted</span>
-                        <span class="tag">Web Dev</span>
-			<span class="tag">JS</span>
-                    </div>
-                </a>
-                <a href="https://cyberoli.uk/" class="project-card" target="_blank" rel="noopener noreferrer">
-                    <h3>[02] Homelab</h3>
-                    <p>Becoming Self-Hosted has been an interesting idea for me for awhile. Recently, I bought an old PC and put proxmox on it!</p>
-                    <div class="tags">
-                        <span class="tag">Docker</span>
-                        <span class="tag">Proxmox</span>
-                        <span class="tag">Automation</span>
-                    </div>
-                </a>
-            </div>
+    <a href="https://github.com/1144oli/1144oli.github.io" class="project-card" target="_blank" rel="noopener noreferrer">
+        <h3>[01] Portfolio</h3>
+        <p>The website you're on now!</p>
+        <div class="tags">
+            <span class="tag">Self-Hosted</span>
+            <span class="tag">Web Dev</span>
+            <span class="tag">JS</span>
+        </div>
+    </a>
+    <a href="https://cyberoli.uk/" class="project-card" target="_blank" rel="noopener noreferrer">
+        <h3>[02] Homelab</h3>
+        <p>Becoming Self-Hosted has been an interesting idea for me for awhile. Recently, I bought an old PC and put proxmox on it!</p>
+        <div class="tags">
+            <span class="tag">Docker</span>
+            <span class="tag">Proxmox</span>
+            <span class="tag">Automation</span>
+        </div>
+    </a>
+    <a href="https://github.com/1196-sam/Pyvern" class="project-card" target="_blank" rel="noopener noreferrer">
+        <h3>[03] Pyvern</h3>
+        <p>A python chat over LAN using socket server made with my friend Sam.</p>
+        <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Socket Server</span>
+            <span class="tag">Networking</span>
+        </div>
+    </a>
+</div>
         </section>
         <section id="contact" class="section">
             <h2>Contact</h2>
 		<p>Lets talk!</p>
             <div class="terminal">
-                <div class="terminal-line"><span class="prompt">root@security:~#</span> echo $EMAIL</div>
+                <div class="terminal-line"><span class="prompt">oli@debook:~#</span> cat ~/Documents/email.txt</div>
 		<div class="terminal-line">oli@cyberoli.uk</div>
-                <div class="terminal-line"><span class="prompt">root@security:~#</span> echo $LOCATION</div>
-                <div class="terminal-line">Sheffield</div>
+                <div class="terminal-line"><span class="prompt">oli@debook:~#</span> <span id="location-command"></span></div>
+                <div class="terminal-line" id="location-output"></div>
             </div>
             <div class="social-links">
                 <a href="https://github.com/1144oli">GitHub</a>
@@ -70,7 +78,6 @@
     </div>
 
     <script src="drag.js"></script>
+    <script src="terminal.js"></script>
 </body>
 </html>
-
-

@@ -3,67 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog | Under Construction</title>
+    <title>Blog Post | Oli</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .construction-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 80vh;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .construction-icon {
-            font-size: 4em;
-            margin-bottom: 30px;
-            color: #ff69b4;
-        }
-
-        .construction-title {
-            font-size: 2.5em;
-            color: #ff1493;
-            margin-bottom: 20px;
-        }
-
-        .construction-text {
-            font-size: 1.2em;
-            color: #ffb3d9;
-            margin-bottom: 40px;
-            max-width: 600px;
-        }
-
-        .back-link {
-            color: #ff69b4;
-            text-decoration: none;
-            padding: 12px 30px;
-            border: 1px solid #ff69b4;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        .back-link:hover {
-            background: #ff69b4;
-            color: #0a0a0a;
-        }
-    </style>
+    <link rel="stylesheet" href="blogstyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
     <canvas class="matrix-bg" id="matrix"></canvas>
     
     <div class="container">
-        <div class="construction-container">
-            <div class="construction-icon">⚠</div>
-            <h1 class="construction-title">Under Construction</h1>
-            <p class="construction-text">
-                The blog is currently being built. I'll put something here eventually. 
-            </p>
-            <a href="index.html" class="back-link">← Back to Home</a>
-        </div>
+        <header>
+            <h1>Blog</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="blog.html">All Posts</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+        </header>
+
+        <section class="section">
+            <h2 id="post-title"></h2>
+            <p id="post-date" style="color: #ff69b4; margin-bottom: 20px;"></p>
+            <div id="post-content" class="blog-content">
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025</p>
+        </footer>
     </div>
 
-    <script src="script.js"></script>
+    <script src="drag.js"></script>
+    <script src="blog.js"></script>
 </body>
 </html>
