@@ -4,7 +4,7 @@ const posts = [
         date: "2025-11-19",
         file: "posts/test.md",
         slug: "first-post"
-    }
+    },
 ];
 
 function displayBlogList() {
@@ -12,7 +12,7 @@ function displayBlogList() {
     
     posts.forEach(post => {
         const postCard = document.createElement('a');
-        postCard.href = `post.html?slug=${post.slug}`;
+        postCard.href = `posts.html?slug=${post.slug}`;
         postCard.className = 'project-card';
         postCard.innerHTML = `
             <h3>${post.title}</h3>

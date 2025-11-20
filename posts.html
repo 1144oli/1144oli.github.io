@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Posts | Oli</title>
+    <title>Blog Post | Oli</title>
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="blogstyle.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body>
@@ -14,7 +16,7 @@
 
     <div class="container">
         <header>
-            <h1>All Blog Posts</h1>
+            <h1>Blog</h1>
             <nav>
                 <a href="index.html">Home</a>
                 <a href="blog.html">All Posts</a>
@@ -22,7 +24,9 @@
         </header>
 
         <section class="section">
-            <div id="post-list" class="blog-list"></div>
+            <h2 id="post-title"></h2>
+            <p id="post-date" style="color: #ff69b4; margin-bottom: 20px;"></p>
+            <div id="post-content" class="blog-content"></div>
         </section>
 
         <footer>
@@ -30,7 +34,8 @@
         </footer>
     </div>
 
-    <script src="posts.js"></script>
+    <script src="drag.js"></script>
+    <script src="post.js"></script>
 </body>
 </html>
 
