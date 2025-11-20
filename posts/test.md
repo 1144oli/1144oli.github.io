@@ -8,6 +8,5 @@ this is a test blog i hope it works!
 
 - Network security
 - Linux administration
-- Ethical hacking
 
 Check out my [homelab project](https://cyberoli.uk)!
