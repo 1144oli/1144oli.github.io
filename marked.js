@@ -1,9 +1,9 @@
 const posts = [
     {
-        title: "Test",
-        date: "2025-11-19",
-        file: "posts/test.md",
-        slug: "first-post"
+        title: "Why is EVERYONE homelabbing?",
+        date: "22/11/2025",
+        file: "posts/Everyones_Homelabbing",
+        slug: "first-post + testing photos"
     },
 ];
 
