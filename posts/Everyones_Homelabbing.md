@@ -1,3 +1,7 @@
+---
+title: Why is EVERYONE Homelabbing?
+date: 22/11/2025
+---
 # Homelabbing: a new trend
 
 ### What is Homelabbing?
