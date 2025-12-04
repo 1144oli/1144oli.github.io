@@ -29,12 +29,29 @@ body {
     margin: 0 auto;
     padding: 20px;
 }
-
 header {
     border: 1px solid #ff69b4;
     padding: 30px;
     margin-bottom: 40px;
     background: rgba(10, 10, 10, 0.9);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #ff1493;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.header-content {
+    flex: 1;
+    min-width: 300px;
 }
 h1 {
     font-size: 2.5em;
