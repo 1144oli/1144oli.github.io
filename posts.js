@@ -5,19 +5,17 @@ loadPosts();
 
 async function loadPosts() {
     try {
-        const html = await fetch("posts/").then(r => r.text());
+        const files = await fetch("posts/posts.json").then(r => r.json());
+        buildList(files);
+    } catch (e) {
+        console.log("posts.json failed, attempting directory index");
 
+        const html = await fetch("posts/").then(r => r.text());
         const files = [...html.matchAll(/href="([^"]+\.md)"/g)]
             .map(m => m[1])
             .map(fn => fn.split('/').pop().replace(".md", ""));
 
-        if (files.length === 0) throw new Error("No index");
-
-        buildList(files);
-    } catch (e) {
-        console.log("Directory index failed, using posts.json fallback");
-
-        const files = await fetch("posts/posts.json").then(r => r.json());
+        if (files.length === 0) throw new Error("No posts found");
         buildList(files);
     }
 }
