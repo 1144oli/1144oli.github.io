@@ -22,6 +22,7 @@ async function loadPost(post) {
 
     postTitleEl.textContent = title;
     postDateEl.textContent = date;
+    document.title = title + " | Oli";
     postContentEl.innerHTML = marked.parse(content);
 }
 
