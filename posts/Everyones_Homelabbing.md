@@ -2,7 +2,7 @@
 title: Why is EVERYONE Homelabbing?
 date: 22/11/2025
 ---
-# Homelabbing: a new trend
+
 ## What is Homelabbing?
 A homelab is a personal server used for learning, experimentation, and most importantly self self-hosting services. In recent years, this has become more and more popular, but especially in the past few months.
 
@@ -20,7 +20,8 @@ I'll start with the LXCs. LXCs are lightweight containers similar to Docker; the
 
 ### Glance 
 Glance is another LXC which is a dashboard, I have it set up so that it automatically directs me to the page when opening a new tab in my web browser. Its very customisable allowing you to change pretty much whatever you want about it.
-![Glance dash](https://github.com/glanceapp/glance/blob/main/docs/images/readme-main-image.png) 
+
+![Glance dash](photos/readme-main-image.png) 
 
 ### PiHole 
 [PiHole](https://pi-hole.net/) is a DNS sinkhole it provides network wide advertisement blocking I also have this set up on an LXC and it also provides an amazing dashboard to view all allowed and disallowed traffic and what devices are doing this, I would suggest thing project to anyone starting out in the homelabbing world. It provides skills in DNS, LXC, Networking, and most importantly gives you privacy from trackers and advertisements across the internet. 
