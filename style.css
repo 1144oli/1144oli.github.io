@@ -239,3 +239,56 @@ footer {
     from, to { background-color: transparent; }
     50% { background-color: #ff69b4; }
 }
+
+
+.timeline-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,20,147,0.12);padding:8px 14px;border-radius:10px;max-width:100%}
+.timeline-header{color:#ffb3d9;font-size:14px;margin-bottom:18px;padding-left:6px}
+
+
+.timeline-track{position:relative;height:44px;padding:6px 8px;margin:6px 0;z-index:1}
+.timeline-line{position:absolute;left:40px;right:40px;top:50%;height:6px;background:rgba(255,20,147,0.06);transform:translateY(-50%);border-radius:6px}
+.timeline-fill{position:absolute;left:40px;top:50%;height:6px;background:linear-gradient(90deg,#ff1493,#ff69b4);transform:translateY(-50%);border-radius:6px;width:0%;transition:width 600ms ease}
+
+
+.timeline-dot{position:absolute;top:50%;width:12px;height:12px;border-radius:50%;background:#ff1493;border:none;transform:translate(-50%,-50%);box-shadow:0 4px 10px rgba(255,20,147,0.18)}
+.timeline-dot.start{left:40px}
+.timeline-dot.end{left:calc(100% - 40px)}
+
+
+.timeline-current{position:absolute;top:50%;width:22px;height:22px;border-radius:50%;background:linear-gradient(180deg,#ff6aa6,#ff1493);box-shadow:0 12px 28px rgba(255,20,147,0.22);transform:translate(-50%,-50%);transition:left 400ms ease;border:3px solid rgba(10,10,10,0.6)}
+
+.timeline-labels{display:flex;justify-content:space-between;font-size:13px;color:#ffb3d9;margin-top:8px;padding:0 40px}
+.timeline-labels .label-left, .timeline-labels .label-right{color:#ffb3d9}
+
+.timeline-years{position:relative;height:60px;margin-bottom:4px;padding:0 40px;z-index:3}
+.timeline-years .year{position:absolute;top:36px;transform:translateX(-50%);color:#ffb3d9;font-size:13px;white-space:nowrap}
+.timeline-years .year.graduation{background:transparent;color:#ffb3d9;padding:0;border-radius:0;font-weight:400;border:0}
+
+.timeline-grad{position:absolute;color:#ffb3d9;background:transparent;font-weight:400;font-size:13px;padding:0;border-radius:0;border:0;white-space:nowrap;transform:translateX(-50%) translateY(-140%)}
+
+.timeline-tooltip{
+    position:fixed;
+    transform:translateX(-50%);
+    background:rgba(10,10,10,0.95);
+    color:#ffb3d9;
+    padding:6px 8px;
+    border-radius:6px;
+    font-size:12px;
+    pointer-events:none;
+    opacity:0;
+    transition:opacity 140ms ease;
+    border:1px solid rgba(255,20,147,0.12);
+    z-index:9999;
+}
+
+@media (max-width:520px){
+    .timeline-card{padding:8px}
+    .timeline-track{height:44px;padding:6px 10px}
+    .timeline-line{left:12px;right:12px}
+    .timeline-fill{left:12px}
+    .timeline-dot.start{left:12px}
+    .timeline-dot.end{left:calc(100% - 12px)}
+    .timeline-labels,.timeline-years{padding:0 12px}
+    .timeline-years{height:48px}
+    .timeline-years .year{top:28px;font-size:12px}
+}
