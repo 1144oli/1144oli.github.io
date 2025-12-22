@@ -87,15 +87,27 @@ function initUniversityTimeline(){
                 }
                 tooltip.textContent = `${percent}% completed`;
 
-                const tipX = lineRect.left + lineWidth * pct;
-                const tipY = lineRect.top - 10; 
-                tooltip.style.left = tipX + 'px';
-                tooltip.style.top = (tipY - 28) + 'px';
+                    const updateTooltipPos = () => {
+                        const curRect = current.getBoundingClientRect();
+                        const tipX = curRect.left + (curRect.width / 2);
+                        const tipY = curRect.top;
+                        tooltip.style.left = tipX + 'px';
+                        tooltip.style.top = (tipY - 28) + 'px';
+                    };
 
-                const showTip = () => { tooltip.style.opacity = '1'; };
-                const hideTip = () => { tooltip.style.opacity = '0'; };
-                current.onmouseenter = showTip;
-                current.onmouseleave = hideTip;
+                    const showTip = () => {
+                        const nowHover = Date.now();
+                        const pctHover = total <= 0 ? 0 : (nowHover - overallStart) / total;
+                        const percentHover = Math.round(Math.max(0, Math.min(1, pctHover)) * 100);
+                        tooltip.textContent = `${percentHover}% completed`;
+                        updateTooltipPos();
+                        tooltip.style.opacity = '1';
+                    };
+                    const hideTip = () => { tooltip.style.opacity = '0'; };
+                    current.onmouseenter = showTip;
+                    current.onmouseleave = hideTip;
+
+                
         }
     } else {
         if(fill) fill.style.width = percent + '%';
