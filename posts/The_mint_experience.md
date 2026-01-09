@@ -1,6 +1,9 @@
 ---
-title: The Mint Exprience
-date: 14/12/2025
+title: The Mint Experience
+date: 09/01/2026
 ---
 
-Mint is often called the 'beginner' distro but I think it would be as apt (haha) to call it the end-game distro. This is due to its simplicity, obviously theres others which are even more simple like [Zorin](https://zorin.com/os/) or [AnduinOS](https://www.anduinos.com/) but mints a good middle ground  
+Mint is often called the 'beginner' distro but I think it would be as apt (haha) to call it the end-game distro. This is due to its simplicity, obviously theres others which are even more simple like [Zorin](https://zorin.com/os/) or [AnduinOS](https://www.anduinos.com/) but mints a good middle ground. To be completely honest, I think "windows-like" distros aren't the most satisfactory. This is because I want to be in two minds when using the different OS', the "flow" is completely different between windows and linux, in my case right now mint with cinnamon or debain with hyprland on my laptop for university as opposed to windows which I now only use for gaming when required. When I first went back to windows after being fully Linux I found myself opening up terminal to install apps purely out of habit which I know is possible but less than recommended on windows. I was also overwhelmed by the amount of just pointless information I was given, while I definitely enjoy useless information, here it was things like 'breaking news' appearing on my windows taskbar and constantly getting spammed one drive notifications. But this isn't the windows hate post so back to linux, where I even between distros I use different window managers as I'm using the devices for different things my laptop runs hyprland as I think it gives me minimal distractions and its easy to switch between workspaces something I do often, it also stops me from using the mouse too much which is great for a laptop. I use cinnamon on my desktop as I use the computer to game, I don't need to switch workspaces as much as I'm lucky enough to have more than 1 monitor. 
+
+## Software 
+Mint gave me some issues, the cinnamon addition is by default as of writing this on ubuntu 22 which is some versions down and due to this and obviously being debian based getting hyprland to work on it was too much effort at the time so I stuck with cinnamon a floating window manager like windows, this has been alright not great just alright. 
