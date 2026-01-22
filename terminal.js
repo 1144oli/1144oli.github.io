@@ -22,10 +22,12 @@ function clearText(element) {
 async function runTerminalAnimation() {
     const locationCommand = document.getElementById('location-command');
     const locationOutput = document.getElementById('location-output');
+    const locationCaret = document.getElementById('location-caret');
     
     if (locationCommand && locationOutput) {
         clearText(locationCommand);
         clearText(locationOutput);
+        if (locationCaret) clearText(locationCaret);
         
         locationCommand.classList.add('typing');
         
@@ -33,7 +35,7 @@ async function runTerminalAnimation() {
         await typeText(locationCommand, './location.sh', 80);
 
         locationCommand.classList.remove('typing');
-        locationOutput.classList.add('typing');
+        if (locationCaret) locationCaret.classList.add('typing');
 
         await new Promise(resolve => setTimeout(resolve, 300));
 
@@ -41,7 +43,7 @@ async function runTerminalAnimation() {
 
         await new Promise(resolve => setTimeout(resolve, 3000));
 
-        locationOutput.classList.remove('typing');
+        if (locationCaret) locationCaret.classList.remove('typing');
         
         runTerminalAnimation();
     }
@@ -54,7 +56,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function initUniversityTimeline(){
     const overallStart = new Date(2024,8,1).getTime();
-    const overallEnd = new Date(2028,4,31).getTime();
+    const overallEnd = new Date(2027,4,31).getTime();
     const now = Date.now();
     const total = overallEnd - overallStart;
     let pct = total <= 0 ? 0 : (now - overallStart) / total;
@@ -120,7 +122,6 @@ function initUniversityTimeline(){
             {label: 'Year 1', start: new Date(2024,8,1).getTime(), title: 'Sep 2024 – mid 2025'},
             {label: 'Year 2', start: new Date(2025,8,1).getTime(), title: 'Sep 2025 – mid 2026'},
             {label: 'Year 3', start: new Date(2026,8,1).getTime(), title: 'Sep 2026 – mid 2027'},
-            {label: 'Year 4', start: new Date(2027,8,1).getTime(), title: 'Sep 2027 – May/July 2028'}
         ];
 
         const lineRect2 = line ? line.getBoundingClientRect() : null;
