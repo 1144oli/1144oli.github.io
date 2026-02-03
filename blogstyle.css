@@ -158,3 +158,100 @@ tr:nth-child(even) {
 tr:hover {
   background-color: #ddd;
 }
+
+
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  align-items: center;
+  justify-content: center;
+}
+
+.image-modal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.image-modal-controls {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 10px;
+  background: rgba(255, 105, 180, 0.1);
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ff69b4;
+  z-index: 10000;
+}
+
+.image-modal-btn {
+  background: #ff69b4;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: all 0.15s ease;
+}
+
+.image-modal-btn:hover {
+  background: #ff1493;
+  transform: scale(1.05);
+}
+
+.image-modal-btn.active {
+  background: #ff1493;
+  box-shadow: 0 0 10px #ff69b4;
+}
+
+.image-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-modal-content {
+  max-width: 85%;
+  max-height: 70vh;
+  object-fit: contain;
+  animation: zoom 0.3s;
+}
+
+
+@keyframes zoom {
+  from {transform: scale(0.5);}
+  to {transform: scale(1);}
+}
+
+.image-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: #ff69b4;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 10000;
+}
+
+.image-modal-close:hover,
+.image-modal-close:focus {
+  color: #ff1493;
+}
