@@ -22,6 +22,9 @@ Arch is a good distro - it really is KISS (keep it simple, stupid) is great but 
 
 ### Thinkpads 
 Best laptops aren't they maybe I should try framework at some point in my life.
+
+### New field 
+I find it quite cool that Computer Science as a field is young enough to where I'm alive at the same time as some of the fathers of the field like Ken Thompson
 ___
 <a id="note1">1</a>: Discord lag can be fixed by disabling hardware acceleration in Settings -> Advanced -> Hardware Acceleration, but then make sure to use run discord via the dedicated GPU, on mint this is very easy just right click on the app dock (which I think is called the task manager on mint) and click 'run with dedicated GPU'.
 ___
