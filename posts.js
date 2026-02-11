@@ -15,7 +15,11 @@ async function loadPosts() {
             .map(m => m[1])
             .map(fn => fn.split('/').pop().replace(".md", ""));
 
-        if (files.length === 0) throw new Error("No posts found");
+        if (files.length === 0) {
+            console.log("No posts found");
+            return;
+        }
+
         buildList(files);
     }
 }
