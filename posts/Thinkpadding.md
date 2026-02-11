@@ -11,5 +11,7 @@ My daily driver is the ThinkPad T480 widely considered "the last great ThinkPad"
 
 ## Internals
 ![Internals](photos/IMG_2572.jpeg =400 align=center rotate=270 hi=photos/IMG_2572.jpeg)
+
 ___
+
 [I found a great video about battery maxing](https://www.youtube.com/watch?v=WXlS92IVsDM)
