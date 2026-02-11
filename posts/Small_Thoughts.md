@@ -25,6 +25,9 @@ Best laptops aren't they maybe I should try framework at some point in my life.
 
 ### Rust
 Recently been getting into rust as of the past few days (11/02/2026) so far, its been pretty fun, learning python has been a massive help. Its helped me to think through the problems in a programatic way, if I had not learnt python I would not think like that.
+
+### New field 
+I find it quite cool that Computer Science as a field is young enough to where I'm alive at the same time as some of the fathers of the field like Ken Thompson
 ___
 <a id="note1">1</a>: Discord lag can be fixed by disabling hardware acceleration in Settings -> Advanced -> Hardware Acceleration, but then make sure to use run discord via the dedicated GPU, on mint this is very easy just right click on the app dock (which I think is called the task manager on mint) and click 'run with dedicated GPU'.
 ___
