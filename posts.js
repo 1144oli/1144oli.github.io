@@ -4,24 +4,8 @@ const postListEl = document.getElementById("post-list");
 loadPosts();
 
 async function loadPosts() {
-    try {
-        const files = await fetch("posts/posts.json").then(r => r.json());
-        buildList(files);
-    } catch (e) {
-        console.log("posts.json failed, attempting directory index");
-
-        const html = await fetch("posts/").then(r => r.text());
-        const files = [...html.matchAll(/href="([^"]+\.md)"/g)]
-            .map(m => m[1])
-            .map(fn => fn.split('/').pop().replace(".md", ""));
-
-        if (files.length === 0) {
-            console.log("No posts found");
-            return;
-        }
-
-        buildList(files);
-    }
+    const files = await fetch("posts/posts.json").then(r => r.json());
+    buildList(files);
 }
 
 async function buildList(files) {

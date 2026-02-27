@@ -6,26 +6,25 @@
     <title>Oli | Cyber Security Student</title>
     <link rel="icon" href="/photos/discordpfp.png">
     <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
     <canvas class="matrix-bg" id="matrix"></canvas>
-    
+
     <div class="container">
-      <header>
-          <img src="photos/discordpfp.png" alt="Oli's Profile Picture" class="profile-pic">
-          <div class="header-content">
-              <h1>Oli</h1>
-              <p class="typing-effect">University Student | Linux Enjoyer | Homelabbing Enthusiast</p>
-              <nav>
-                  <a href="#projects">Projects</a>
-                  <a href="blog.html">Blogs</a>	
-              </nav>
-          </div>
-      </header>
+        <header>
+            <img src="photos/discordpfp.png" alt="Oli's Profile Picture" class="profile-pic">
+            <div class="header-content">
+                <h1>Oli</h1>
+                <p class="typing-effect">University Student | Linux Enjoyer | Homelabbing Enthusiast</p>
+                <nav>
+                    <a href="#projects">Projects</a>
+                    <a href="blog.html">Blogs</a>
+                </nav>
+            </div>
+        </header>
         <section id="about" class="section">
             <h2>About Me</h2>
-		<p>Hi! I'm Oli, a 19 year old from the UK &#x1f1ec;&#x1f1e7; currently studying for a Cyber Security with Forensics degree at Sheffield Hallam University.  	</p>
+            <p>Hi! I'm Oli, a 19 year old from the UK &#x1f1ec;&#x1f1e7; currently studying for a Cyber Security with Forensics degree at Sheffield Hallam University.</p>
         </section>
         <section id="university-timeline" class="section">
             <h2>University</h2>
@@ -48,46 +47,75 @@
         <section id="projects" class="section">
             <h2>Projects</h2>
             <div class="project-grid">
-    <a href="https://github.com/1144oli/1144oli.github.io" class="project-card" target="_blank" rel="noopener noreferrer">
-        <h3>[01] Portfolio</h3>
-        <p>The website you're on now!</p>
-        <div class="tags">
-            <span class="tag">Self-Hosted</span>
-            <span class="tag">Web Dev</span>
-            <span class="tag">JS</span>
-        </div>
-    </a>
-    <a href="https://cyberoli.uk/posts.html?post=Everyones_Homelabbing" class="project-card" target="_blank" rel="noopener noreferrer">
-        <h3>[02] Homelab</h3>
-        <p>Becoming Self-Hosted has been an interesting idea for me for awhile. Recently, I bought an old PC and put proxmox on it!</p>
-        <div class="tags">
-            <span class="tag">Docker</span>
-            <span class="tag">Proxmox</span>
-            <span class="tag">Automation</span>
-        </div>
-    </a>
-    <a href="https://github.com/1196-sam/Pyvern" class="project-card" target="_blank" rel="noopener noreferrer">
-        <h3>[03] Pyvern</h3>
-        <p>A python chat over LAN using socket server made with my friend Sam.</p>
-        <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">Socket Server</span>
-            <span class="tag">Networking</span>
-        </div>
-    </a>
-</div>
-
+                <a href="https://github.com/1144oli/1144oli.github.io" class="project-card" target="_blank" rel="noopener noreferrer">
+                    <h3>[01] Portfolio</h3>
+                    <p>The website you're on now!</p>
+                    <div class="tags">
+                        <span class="tag">Self-Hosted</span>
+                        <span class="tag">Web Dev</span>
+                        <span class="tag">JS</span>
+                    </div>
+                </a>
+                <a href="https://cyberoli.uk/posts.html?post=Everyones_Homelabbing" class="project-card" target="_blank" rel="noopener noreferrer">
+                    <h3>[02] Homelab</h3>
+                    <p>Becoming Self-Hosted has been an interesting idea for me for awhile. Recently, I bought an old PC and put proxmox on it!</p>
+                    <div class="tags">
+                        <span class="tag">Docker</span>
+                        <span class="tag">Proxmox</span>
+                        <span class="tag">Automation</span>
+                    </div>
+                </a>
+                <a href="https://github.com/1196-sam/Pyvern" class="project-card" target="_blank" rel="noopener noreferrer">
+                    <h3>[03] Pyvern</h3>
+                    <p>A python chat over LAN using socket server made with my friend Sam.</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Socket Server</span>
+                        <span class="tag">Networking</span>
+                    </div>
+                </a>
             </div>
+        </section>
+
+        <footer>
             <div class="social-links">
                 <a href="https://github.com/1144oli">GitHub</a>
                 <a href="https://www.linkedin.com/in/oliver-pedley/">LinkedIn</a>
                 <a href="blog.html">Blog</a>
             </div>
-        </section>
-
-        <footer>
             <p>&copy; 2026</p>
         </footer>
+    </div>
+
+    <div id="easter-toast" class="easter-toast" aria-live="polite" aria-atomic="true"></div>
+
+    <div id="cve-modal" class="easter-overlay" role="dialog" aria-modal="true" aria-labelledby="cve-title" aria-hidden="true">
+        <div class="easter-panel">
+            <button class="easter-close" type="button" aria-label="Close">&#x00D7;</button>
+            <h3 id="cve-title">About Oli</h3>
+            <p class="easter-meta">Cyber Security with Forensics student at Sheffield Hallam University.</p>
+            <p class="easter-meta">Linux enjoyer, homelab builder, and always tinkering with self-hosted stuff.</p>
+            <p class="easter-meta">Current focus: learning rust, completing university, and writing about projects.</p>
+            <div class="easter-links">
+                <a href="https://github.com/1144oli" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/oliver-pedley/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="blog.html">Blog</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="robots-modal" class="easter-overlay" role="dialog" aria-modal="true" aria-labelledby="robots-title" aria-hidden="true">
+        <div class="easter-panel">
+            <button class="easter-close" type="button" aria-label="Close">&#x00D7;</button>
+            <h3 id="robots-title">/robots.txt</h3>
+            <pre class="robots-content">AI scraping my website again!
+Disallow: /boring/
+Allow: /curiosity/
+
+# You were not supposed to see this.
+# Since you did, take a break and drink water.
+# Everyone's doing this "life" thing for the first time too!</pre>
+        </div>
     </div>
 
     <script src="drag.js"></script>

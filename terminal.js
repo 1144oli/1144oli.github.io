@@ -1,59 +1,3 @@
-
-function typeText(element, text, speed = 100) {
-    return new Promise((resolve) => {
-        let i = 0;
-        
-        const interval = setInterval(() => {
-            if (i < text.length) {
-                element.textContent += text.charAt(i);
-                i++;
-            } else {
-                clearInterval(interval);
-                resolve();
-            }
-        }, speed);
-    });
-}
-
-function clearText(element) {
-    element.textContent = '';
-}
-
-async function runTerminalAnimation() {
-    const locationCommand = document.getElementById('location-command');
-    const locationOutput = document.getElementById('location-output');
-    const locationCaret = document.getElementById('location-caret');
-    
-    if (locationCommand && locationOutput) {
-        clearText(locationCommand);
-        clearText(locationOutput);
-        if (locationCaret) clearText(locationCaret);
-        
-        locationCommand.classList.add('typing');
-        
-        await new Promise(resolve => setTimeout(resolve, 500));
-        await typeText(locationCommand, './location.sh', 80);
-
-        locationCommand.classList.remove('typing');
-        if (locationCaret) locationCaret.classList.add('typing');
-
-        await new Promise(resolve => setTimeout(resolve, 300));
-
-        locationOutput.textContent = 'Sheffield';
-
-        await new Promise(resolve => setTimeout(resolve, 3000));
-
-        if (locationCaret) locationCaret.classList.remove('typing');
-        
-        runTerminalAnimation();
-    }
-}
-
-window.addEventListener('DOMContentLoaded', () => {
-    runTerminalAnimation();
-});
-
-
 function initUniversityTimeline(){
     const overallStart = new Date(2024,8,1).getTime();
     const overallEnd = new Date(2027,4,31).getTime();
@@ -185,5 +129,5 @@ function initUniversityTimeline(){
 
 window.addEventListener('DOMContentLoaded', () => {
     initUniversityTimeline();
-    setInterval(initUniversityTimeline, 60 * 1000); 
+    setInterval(initUniversityTimeline, 60 * 1000);
 });
