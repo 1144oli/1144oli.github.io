@@ -33,6 +33,14 @@ Another is [TrueNAS](https://www.truenas.com/) which unsurprisingly is Network A
 
 Games servers are also on my homelab, gone are the days of asking others to start the server or paying for a undoubtedly good server, but with less than customization with it. With this you have full control over everything, from server software to mods, to domain. Everything. And it can run 24/7. Like with everything I've spoken about there is a certain level of risk involved especially port forwarding like you'd need to say for a minecraft server but its quite minimal, overall I would suggest reading up on the risks before fully committing to this project. 
 
+![Diagram](photos/homelabdiagram.png)
+
 ## At what cost?
 The best way I've found to start homelabbing is with old desktops on facebook marketplace. I bought 2 desktops for my homelab and combined them, this cost a total of £70, 1 HP pavilion for £20, and a custom PC for £50. In hindsight this was a bit over the top, and could have saved some money buying a perhaps a mini think centre. My homelab consists of 16gb of DDR3 at a reasonable 1600Mhz, an Intel i5-3330 (4) @ 3.200GHz, and a GTX 760 (although getting GPU passthrough to work on proxmox is a pain) Anyone who doesn't pay a flat fee for electricity should probably take that into account too, most homelabs dont use more than a few pounds per day but if that is an issue you can look towards either arm based home servers, like raspberry pis or look towards a laptop server which should lower wattage.
 
+
+
+___
+
+As of recent, my housemates have all started homelabbing with much more powerful homelabs than me! 
+___

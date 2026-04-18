@@ -6,6 +6,11 @@ function initUniversityTimeline(){
     let pct = total <= 0 ? 0 : (now - overallStart) / total;
     pct = Math.max(0, Math.min(1, pct));
     const percent = Math.round(pct * 100);
+    const completedDays = Math.max(0, Math.round((Math.min(now, overallEnd) - overallStart) / 86400000));
+    const totalDays = Math.max(0, Math.round(total / 86400000));
+    const daysLeft = Math.max(0, totalDays - completedDays);
+
+    const progressText = `${percent}% completed • ${completedDays} day${completedDays === 1 ? '' : 's'} completed • ${daysLeft} day${daysLeft === 1 ? '' : 's'} left`;
 
     const fill = document.getElementById('timeline-fill');
     const current = document.getElementById('timeline-current');
@@ -21,7 +26,7 @@ function initUniversityTimeline(){
         if(current){
                 const curLeftPx = (relLeft + lineWidth * pct);
                 current.style.left = curLeftPx + 'px';
-                current.title = `Progress: ${percent}%`;
+            current.title = `Progress: ${percent}% (${completedDays} day${completedDays === 1 ? '' : 's'} completed, ${daysLeft} day${daysLeft === 1 ? '' : 's'} left)`;
 
 
                 let tooltip = document.getElementById('timeline-tooltip');
@@ -31,7 +36,7 @@ function initUniversityTimeline(){
                     tooltip.className = 'timeline-tooltip';
                     document.body.appendChild(tooltip);
                 }
-                tooltip.textContent = `${percent}% completed`;
+                tooltip.textContent = progressText;
 
                     const updateTooltipPos = () => {
                         const curRect = current.getBoundingClientRect();
@@ -45,7 +50,9 @@ function initUniversityTimeline(){
                         const nowHover = Date.now();
                         const pctHover = total <= 0 ? 0 : (nowHover - overallStart) / total;
                         const percentHover = Math.round(Math.max(0, Math.min(1, pctHover)) * 100);
-                        tooltip.textContent = `${percentHover}% completed`;
+                        const completedDaysHover = Math.max(0, Math.round((Math.min(nowHover, overallEnd) - overallStart) / 86400000));
+                        const daysLeftHover = Math.max(0, totalDays - completedDaysHover);
+                        tooltip.textContent = `${percentHover}% completed • ${completedDaysHover} day${completedDaysHover === 1 ? '' : 's'} completed • ${daysLeftHover} day${daysLeftHover === 1 ? '' : 's'} left`;
                         updateTooltipPos();
                         tooltip.style.opacity = '1';
                     };

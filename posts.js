@@ -10,7 +10,7 @@ async function loadPosts() {
 
 async function buildList(files) {
     for (const file of files) {
-        const url = `/posts/${file}.md`;
+        const url = `posts/${file}.md`;
         const text = await fetch(url).then(r => r.text());
 
         const meta = extractMeta(text);
