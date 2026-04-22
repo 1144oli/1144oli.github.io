@@ -32,6 +32,13 @@ I find it quite cool that Computer Science as a field is young enough to where I
 
 ### Matrix Servers
 My friend and roomate Sean has been looking into hosting his own matrix server. This requires him to build his own homelab which I'm helping him with - slightly jealous because his homelab will be better than mine.
+
+### ORCS and dot matrix
+ORCS is a system made by my friend Sam which tells us when each person in our house is in. It runs off a Pi and a dot matrix, and uses an API with GET/POST requests and a token system to determine if we're in or not. ORCS stands for Oli, Raya, Caiden, Sam (Raya is Sean). [photos here](posts/ORCSphotos.md)
+
+Each of us has a script on our phones which updates the API when we leave or arrive home. For example, on iPhone we use Shortcuts to trigger this automatically.
+
+The data is then displayed on a dot matrix display in our living room, as well as on our phones. This makes it really easy to quickly see who's home at any time.
 ___
 <a id="note1">1</a>: Discord lag can be fixed by disabling hardware acceleration in Settings -> Advanced -> Hardware Acceleration, but then make sure to use run discord via the dedicated GPU, on mint this is very easy just right click on the app dock (which I think is called the task manager on mint) and click 'run with dedicated GPU'.
 ___
