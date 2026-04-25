@@ -34,7 +34,7 @@ I find it quite cool that Computer Science as a field is young enough to where I
 My friend and roomate Sean has been looking into hosting his own matrix server. This requires him to build his own homelab which I'm helping him with - slightly jealous because his homelab will be better than mine.
 
 ### ORCS and dot matrix
-ORCS is a system made by my friend Sam which tells us when each person in our house is in. It runs off a Pi and a dot matrix, and uses an API with GET/POST requests and a token system to determine if we're in or not. ORCS stands for Oli, Raya, Caiden, Sam (Raya is Sean). [photos here](posts/ORCSphotos.md)
+ORCS is a system made by my friend Sam which tells us when each person in our house is in. It runs off a Pi and a dot matrix, and uses an API with GET/POST requests and a token system to determine if we're in or not. ORCS stands for Oli, Raya, Caiden, Sam (Raya is Sean). [photos here](https://cyberoli.uk/posts.html?post=ORCSphotos)
 
 Each of us has a script on our phones which updates the API when we leave or arrive home. For example, on iPhone we use Shortcuts to trigger this automatically.
 

@@ -19,5 +19,6 @@ ORCS is a system in my house to know when someone is home. We have it displayed 
 
 ### Build log 
 17/04 - I researched ways to do the project. I have not yet decided if I want this to just be a dashboard or if it should have some functionality with a touchscreen, etc.  
-18/04 - I decided on an iPad because this gives me the most flexibility. It has been ordered and should arrive between the 21st and 27th of this month (April).
-22/04 - The iPad Air has arrived. Quick and only cost me £10 I will probably hold off on the project until after my assignments need to be in on the 7th of may. 
+18/04 - I decided on an iPad because this gives me the most flexibility. It has been ordered and should arrive between the 21st and 27th of this month (April). 
+<br>22/04 - The iPad Air has arrived. Quick and only cost me £10 I will probably hold off on the project until after my assignments need to be in on the 7th of may. <br>
+23/04 - I've checked the Ipad and it works well! I'm very happy with it for £10. Now I need to start making the website. Obviously its a local website. But I haven't yet thought of hosts, or even what I'm going to use to make the website. I am worried that with it being constantly charging it will face battery problems however.

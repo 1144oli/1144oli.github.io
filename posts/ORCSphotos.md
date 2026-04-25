@@ -1,5 +1,7 @@
 # Photos of ORCS system
 
-[Home Screen](photos/photoofhomescreen.jpg)
+It's the 3/4 people home section
+![Home Screen](photos/photoofhomescreen.jpg)
 
-[ORCS](photos/ORCS.jpg)
+Look in the bottom right spelling of (ORCS)
+![ORCS](photos/ORCS.jpg)
