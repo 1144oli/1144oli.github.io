@@ -72,6 +72,10 @@ header {
     margin-bottom: 10px;
 }
 
+  .blog-header {
+    padding: 16px 10px;
+  }
+
 header h1 {
     margin: 0;
     line-height: 1;
@@ -90,6 +94,19 @@ header nav a {
     align-items: center;
     margin-top: -10px;
 }
+
+header nav .theme-toggle {
+  display: flex;
+  align-items: center;
+  margin-top: -10px;
+}
+
+.blog-header nav {
+    margin-top: 0;
+}
+  .blog-header nav {
+    justify-content: flex-start;
+  }
 
 a {
   color: #ff1493;
@@ -251,4 +268,102 @@ body.neon-mode .blog-content h3 {
 
 body.neon-mode #post-date {
   color: #6efbff;
+}
+
+body:not(.neon-mode) .blog-content,
+body:not(.neon-mode) #post-date,
+body:not(.neon-mode) a {
+  color: #fff;
+}
+
+body:not(.neon-mode) .blog-content h1,
+body:not(.neon-mode) .blog-content h2,
+body:not(.neon-mode) .blog-content h3,
+body:not(.neon-mode) .blog-content code {
+  color: #fff;
+}
+
+body:not(.neon-mode) .blog-content pre,
+body:not(.neon-mode) .image-modal-controls {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+body:not(.neon-mode) .image-modal-btn {
+  background: #fff;
+  color: #0a0a0a;
+}
+
+body:not(.neon-mode) .image-modal-btn:hover,
+body:not(.neon-mode) .image-modal-btn.active {
+  background: #ddd;
+  color: #0a0a0a;
+}
+
+body:not(.neon-mode) .image-modal-close {
+  color: #fff;
+}
+
+body:not(.neon-mode) .image-modal-close:hover,
+body:not(.neon-mode) .image-modal-close:focus {
+  color: #ddd;
+}
+
+body.light-mode .blog-content,
+body.light-mode #post-date,
+body.light-mode a,
+body.light-mode .blog-content h1,
+body.light-mode .blog-content h2,
+body.light-mode .blog-content h3,
+body.light-mode .blog-content code {
+  color: #111;
+}
+
+body.light-mode .blog-content pre,
+body.light-mode .image-modal-controls {
+  border-color: #111;
+}
+
+body.light-mode .image-modal-btn {
+  background: #111;
+  color: #fff;
+}
+
+body.light-mode .image-modal-btn:hover,
+body.light-mode .image-modal-btn.active {
+  background: #333;
+}
+
+body.light-mode .image-modal-close {
+  color: #111;
+}
+
+body.high-contrast .blog-content,
+body.high-contrast .blog-content h1,
+body.high-contrast .blog-content h2,
+body.high-contrast .blog-content h3,
+body.high-contrast .blog-content p,
+body.high-contrast .blog-content a,
+body.high-contrast #post-title,
+body.high-contrast #post-date,
+body.high-contrast .blog-content code,
+body.high-contrast blockquote,
+body.high-contrast th,
+body.high-contrast td {
+  color: #fff !important;
+}
+
+body.high-contrast .blog-content pre,
+body.high-contrast .image-modal-controls,
+body.high-contrast .image-modal-btn {
+  background: #000 !important;
+  border-color: #fff !important;
+  color: #fff !important;
+}
+
+body.high-contrast .image-modal-close {
+  color: #fff !important;
+}
+
+body.light-mode .image-modal {
+  background-color: rgba(244, 244, 244, 0.96);
 }

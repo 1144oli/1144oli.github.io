@@ -1,6 +1,6 @@
 ---
 title: Why is EVERYONE Homelabbing?
-date: 22/11/2025
+date: 22/11/2025 Last edited on 12/09/2026
 ---
 
 ## What is Homelabbing?

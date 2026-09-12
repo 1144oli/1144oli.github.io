@@ -2,6 +2,10 @@ let matrixColor = '#ff69b4';
 const canvas = document.getElementById('matrix');
 const ctx = canvas ? canvas.getContext('2d') : null;
 
+if (localStorage.getItem('light-mode') === 'on') {
+    document.body.classList.add('light-mode');
+}
+
 function resizeCanvas() {
     if (!canvas) return;
     canvas.width = window.innerWidth;
@@ -72,6 +76,114 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+function openExternalLinksInNewTabs() {
+    document.querySelectorAll('a[href]').forEach(link => {
+        const url = new URL(link.href, window.location.href);
+        if (url.protocol === 'http:' || url.protocol === 'https:') {
+            if (url.origin !== window.location.origin) {
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+            }
+        }
+    });
+}
+
+openExternalLinksInNewTabs();
+window.addEventListener('postLoaded', openExternalLinksInNewTabs);
+
+function updateAccessibilityThemeLabel() {
+    const button = document.querySelector('[data-accessibility="theme"]');
+    if (!button) return;
+    const isLight = document.body.classList.contains('light-mode');
+    button.textContent = isLight ? 'Dark mode' : 'Light mode';
+    button.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+}
+
+function initAccessibilityMenu() {
+    if (document.querySelector('.accessibility-menu')) return;
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'accessibility-menu';
+    wrapper.innerHTML = `
+        <button class="accessibility-trigger" type="button" aria-label="Open accessibility options" aria-expanded="false">&hellip;</button>
+        <div class="accessibility-panel" role="group" aria-label="Accessibility options" hidden>
+            <button type="button" data-accessibility="theme">Light mode</button>
+            <button type="button" data-accessibility="dyslexia">Dyslexia-friendly font</button>
+            <button type="button" data-accessibility="contrast">High contrast</button>
+            <button type="button" data-accessibility="motion">Reduce motion</button>
+            <label class="text-size-control" for="accessibility-text-size">Text size <output id="accessibility-text-size-value">100%</output></label>
+            <input id="accessibility-text-size" type="range" min="100" max="150" step="5" value="100" aria-label="Text size">
+        </div>
+    `;
+    document.body.appendChild(wrapper);
+
+    const trigger = wrapper.querySelector('.accessibility-trigger');
+    const panel = wrapper.querySelector('.accessibility-panel');
+    const preferences = {
+        theme: 'light-mode',
+        dyslexia: 'dyslexia-font',
+        contrast: 'high-contrast',
+        motion: 'reduced-motion'
+    };
+
+    const setPreference = (key, enabled) => {
+        const className = preferences[key];
+        document.body.classList.toggle(className, enabled);
+        const storageKey = key === 'theme' ? 'light-mode' : `accessibility-${key}`;
+        localStorage.setItem(storageKey, enabled ? 'on' : 'off');
+        if (key === 'theme') updateAccessibilityThemeLabel();
+        const button = wrapper.querySelector(`[data-accessibility="${key}"]`);
+        if (button) {
+            button.classList.toggle('active', enabled);
+            button.setAttribute('aria-pressed', String(enabled));
+            if (key === 'theme') {
+                button.textContent = enabled ? 'Dark mode' : 'Light mode';
+            }
+        }
+    };
+
+    Object.keys(preferences).forEach(key => {
+        const storageKey = key === 'theme' ? 'light-mode' : `accessibility-${key}`;
+        setPreference(key, localStorage.getItem(storageKey) === 'on');
+    });
+
+    trigger.addEventListener('click', () => {
+        const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+        trigger.setAttribute('aria-expanded', String(!isOpen));
+        panel.hidden = isOpen;
+    });
+
+    const textSize = wrapper.querySelector('#accessibility-text-size');
+    const textSizeValue = wrapper.querySelector('#accessibility-text-size-value');
+    const setTextSize = value => {
+        const size = Math.min(150, Math.max(100, Number(value)));
+        document.body.style.fontSize = `${size}%`;
+        textSize.value = String(size);
+        textSizeValue.value = `${size}%`;
+        textSizeValue.textContent = `${size}%`;
+        localStorage.setItem('accessibility-text-size', String(size));
+    };
+
+    setTextSize(localStorage.getItem('accessibility-text-size') || 100);
+    textSize.addEventListener('input', event => setTextSize(event.target.value));
+
+    wrapper.querySelectorAll('[data-accessibility]').forEach(button => {
+        button.addEventListener('click', () => {
+            const key = button.dataset.accessibility;
+            setPreference(key, !document.body.classList.contains(preferences[key]));
+        });
+    });
+
+    document.addEventListener('click', event => {
+        if (!wrapper.contains(event.target)) {
+            trigger.setAttribute('aria-expanded', 'false');
+            panel.hidden = true;
+        }
+    });
+}
+
+initAccessibilityMenu();
+
 function updateMatrixColor() {
     const computed = getComputedStyle(document.body).getPropertyValue('--matrix-color').trim();
     matrixColor = computed || '#ff69b4';
@@ -80,6 +192,7 @@ function updateMatrixColor() {
 function initEasterEggs() {
     const toast = document.getElementById('easter-toast');
     const profilePic = document.querySelector('.profile-pic');
+    const oliHeading = document.querySelector('header h1');
     const konami = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
     let konamiIndex = 0;
     const robotTrigger = 'robots.txt';
@@ -118,10 +231,19 @@ function initEasterEggs() {
     const cveModal = setupModal('cve-modal');
     const robotsModal = setupModal('robots-modal');
 
-    if (profilePic && cveModal) {
-        profilePic.style.cursor = 'pointer';
-        profilePic.addEventListener('click', () => {
-            cveModal.open();
+    const setLightMode = (isOn) => {
+        document.body.classList.toggle('light-mode', isOn);
+        updateAccessibilityThemeLabel();
+    };
+
+    setLightMode(localStorage.getItem('light-mode') === 'on');
+
+    if (cveModal) {
+        [profilePic, oliHeading].filter(Boolean).forEach(trigger => {
+            trigger.style.cursor = 'pointer';
+            trigger.addEventListener('click', () => {
+                cveModal.open();
+            });
         });
     }
 

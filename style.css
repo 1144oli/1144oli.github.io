@@ -9,6 +9,8 @@ body {
     background: #0a0a0a;
     color: #ffb3d9;
     overflow-x: hidden;
+    zoom: 0.85;
+    transition: background-color 250ms ease, color 250ms ease;
 }
 
 .container {
@@ -21,6 +23,28 @@ body {
     padding-bottom: 40px;
     border: 2px solid #ff69b4;
     background: rgba(10, 10, 10, 0.9);
+    animation: page-enter 450ms ease-out both;
+}
+
+@keyframes page-enter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 header {
     border: none;
@@ -32,6 +56,39 @@ header {
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
+}
+
+.theme-toggle {
+    padding: 10px 20px;
+    border: 1px solid #ff69b4;
+    background: transparent;
+    color: #ff69b4;
+    font: inherit;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.main-header {
+    position: relative;
+    padding-right: 180px;
+}
+
+.main-header > .theme-toggle {
+    position: absolute !important;
+    top: 18px;
+    right: 24px;
+}
+
+@media (max-width: 768px) {
+    .main-header {
+        padding-right: 30px;
+    }
+
+    .main-header > .theme-toggle {
+        position: static !important;
+        margin-left: auto;
+        order: -1;
+    }
 }
 
 .profile-pic {
@@ -62,6 +119,11 @@ h1 {
     overflow: hidden;
     white-space: nowrap;
     color: #ffb3d9;
+}
+
+.header-content a {
+    color: inherit;
+    text-decoration: none;
 }
 
 nav {
@@ -461,4 +523,424 @@ body.neon-mode .easter-links a {
 body.neon-mode .easter-links a:hover {
     background: rgba(110, 251, 255, 0.18);
     color: #b8f3ff;
+}
+
+body:not(.neon-mode),
+body:not(.neon-mode) .typing-effect,
+body:not(.neon-mode) .project-card p,
+body:not(.neon-mode) .timeline-header,
+body:not(.neon-mode) .timeline-labels,
+body:not(.neon-mode) .timeline-years .year {
+    color: #fff;
+}
+
+body:not(.neon-mode) h1,
+body:not(.neon-mode) h2,
+body:not(.neon-mode) h3,
+body:not(.neon-mode) nav a,
+body:not(.neon-mode) .tag,
+body:not(.neon-mode) .social-links a,
+body:not(.neon-mode) .easter-links a {
+    color: #fff;
+}
+
+body:not(.neon-mode) .container,
+body:not(.neon-mode) nav a,
+body:not(.neon-mode) .tag,
+body:not(.neon-mode) .social-links a,
+body:not(.neon-mode) .timeline-header,
+body:not(.neon-mode) .easter-close,
+body:not(.neon-mode) .easter-links a {
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+body:not(.neon-mode) .profile-pic,
+body:not(.neon-mode) .timeline-dot,
+body:not(.neon-mode) .timeline-current {
+    border-color: #fff;
+    background: #fff;
+}
+
+body:not(.neon-mode) .timeline-line {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+body:not(.neon-mode) .timeline-fill {
+    background: #fff;
+}
+
+body:not(.neon-mode) .project-card,
+body:not(.neon-mode) .timeline-card {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+body:not(.neon-mode) .timeline-labels .label-left,
+body:not(.neon-mode) .timeline-labels .label-right {
+    color: #fff;
+}
+
+body:not(.neon-mode) .easter-panel,
+body:not(.neon-mode) .easter-meta,
+body:not(.neon-mode) .easter-close {
+    color: #fff;
+}
+
+body:not(.neon-mode) nav a:hover,
+body:not(.neon-mode) .social-links a:hover,
+body:not(.neon-mode) .easter-links a:hover {
+    background: #fff;
+    color: #0a0a0a;
+}
+
+body:not(.neon-mode) .theme-toggle:hover {
+    background: #fff;
+    color: #0a0a0a;
+}
+
+body.light-mode {
+    background: #f4f4f4;
+    color: #111;
+}
+
+body.light-mode .container {
+    background: #fff;
+    border-color: #111;
+}
+
+body.light-mode header,
+body.light-mode .section {
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode .typing-effect,
+body.light-mode .project-card p,
+body.light-mode .timeline-header,
+body.light-mode .timeline-labels,
+body.light-mode .timeline-years .year,
+body.light-mode .easter-panel,
+body.light-mode .easter-meta {
+    color: #111;
+}
+
+body.light-mode nav a,
+body.light-mode .tag,
+body.light-mode .social-links a,
+body.light-mode .easter-links a,
+body.light-mode .theme-toggle {
+    color: #111;
+    border-color: #111;
+}
+
+body.light-mode nav a:hover,
+body.light-mode .social-links a:hover,
+body.light-mode .easter-links a:hover,
+body.light-mode .theme-toggle:hover {
+    background: #111;
+    color: #fff;
+}
+
+body.light-mode .project-card,
+body.light-mode .timeline-card {
+    border-color: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.02);
+}
+
+body.light-mode .timeline-line {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode .timeline-labels .label-left,
+body.light-mode .timeline-labels .label-right,
+body.light-mode .timeline-years .year.graduation {
+    color: #111;
+}
+
+body.light-mode .timeline-fill,
+body.light-mode .timeline-dot,
+body.light-mode .timeline-current {
+    background: #111;
+}
+
+body.light-mode .timeline-current,
+body.light-mode .profile-pic {
+    border-color: #111;
+}
+
+body.light-mode .theme-toggle {
+    background: transparent;
+}
+
+.accessibility-menu {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 11000;
+}
+
+.accessibility-trigger {
+    width: 48px;
+    height: 42px;
+    border: 1px solid currentColor;
+    background: #0a0a0a;
+    color: #fff;
+    font: bold 22px/1 'Courier New', monospace;
+    cursor: pointer;
+}
+
+.accessibility-trigger:hover,
+.accessibility-trigger:focus-visible {
+    background: #fff;
+    color: #0a0a0a;
+}
+
+.accessibility-panel {
+    position: absolute;
+    right: 0;
+    bottom: 52px;
+    display: grid;
+    gap: 6px;
+    width: 190px;
+    padding: 10px;
+    border: 1px solid currentColor;
+    background: #0a0a0a;
+    color: #fff;
+}
+
+.accessibility-panel[hidden] {
+    display: none;
+}
+
+.accessibility-panel button {
+    padding: 8px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 12px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.accessibility-panel button:hover,
+.accessibility-panel button:focus-visible,
+.accessibility-panel button.active {
+    background: #fff;
+    color: #0a0a0a;
+}
+
+.text-size-control {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    color: inherit;
+    font-size: 12px;
+}
+
+#accessibility-text-size {
+    width: 100%;
+    appearance: none;
+    height: 14px;
+    background: transparent;
+    cursor: pointer;
+}
+
+#accessibility-text-size::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 4px;
+    background: #555;
+}
+
+#accessibility-text-size::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    margin-top: -6px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background: #777;
+}
+
+#accessibility-text-size::-moz-range-track {
+    height: 4px;
+    border-radius: 4px;
+    background: #555;
+}
+
+#accessibility-text-size::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background: #777;
+}
+
+body.light-mode .accessibility-trigger,
+body.light-mode .accessibility-panel {
+    background: #fff;
+    color: #111;
+}
+
+body.light-mode .accessibility-panel button {
+    border-color: rgba(0, 0, 0, 0.55);
+}
+
+body.light-mode #accessibility-text-size::-webkit-slider-runnable-track {
+    background: #bbb;
+}
+
+body.light-mode #accessibility-text-size::-webkit-slider-thumb,
+body.light-mode #accessibility-text-size::-moz-range-thumb {
+    border-color: #111;
+    background: #777;
+}
+
+body.light-mode .accessibility-panel button:hover,
+body.light-mode .accessibility-panel button:focus-visible,
+body.light-mode .accessibility-panel button.active,
+body.light-mode .accessibility-trigger:hover,
+body.light-mode .accessibility-trigger:focus-visible {
+    background: #111;
+    color: #fff;
+}
+
+body.dyslexia-font,
+body.dyslexia-font button,
+body.dyslexia-font input,
+body.dyslexia-font textarea {
+    font-family: 'OpenDyslexic', 'Comic Sans MS', Verdana, sans-serif;
+    letter-spacing: 0.03em;
+}
+
+body.large-text {
+    font-size: 112.5%;
+}
+
+body.reduced-motion *,
+body.reduced-motion *::before,
+body.reduced-motion *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+}
+
+body.high-contrast {
+    background: #000;
+    color: #fff;
+}
+
+body.high-contrast .container,
+body.high-contrast .project-card,
+body.high-contrast .timeline-card,
+body.high-contrast .easter-panel {
+    background: #000;
+    border-color: #fff;
+}
+
+body.high-contrast .section,
+body.high-contrast header {
+    border-color: #fff;
+}
+
+body.high-contrast .project-card p,
+body.high-contrast .typing-effect,
+body.high-contrast .timeline-header,
+body.high-contrast .timeline-labels,
+body.high-contrast .timeline-years .year,
+body.high-contrast .easter-panel,
+body.high-contrast .easter-meta {
+    color: #fff;
+}
+
+body.high-contrast .container,
+body.high-contrast .project-card,
+body.high-contrast .timeline-card,
+body.high-contrast .timeline-header,
+body.high-contrast nav a,
+body.high-contrast .tag,
+body.high-contrast .social-links a,
+body.high-contrast .easter-links a,
+body.high-contrast .easter-close,
+body.high-contrast .theme-toggle {
+    border-color: #fff;
+    color: #fff;
+}
+
+body.high-contrast nav a:hover,
+body.high-contrast .social-links a:hover,
+body.high-contrast .easter-links a:hover,
+body.high-contrast .accessibility-panel button:hover,
+body.high-contrast .accessibility-panel button:focus-visible,
+body.high-contrast .accessibility-panel button.active {
+    background: #fff;
+    color: #000;
+}
+
+body.high-contrast .timeline-line {
+    background: #fff;
+}
+
+body.high-contrast .timeline-fill,
+body.high-contrast .timeline-dot,
+body.high-contrast .timeline-current {
+    background: #fff;
+}
+
+body.high-contrast,
+body.high-contrast .container,
+body.high-contrast .container h1,
+body.high-contrast .container h2,
+body.high-contrast .container h3,
+body.high-contrast .container p,
+body.high-contrast .container a,
+body.high-contrast .container button,
+body.high-contrast .container label,
+body.high-contrast .container output,
+body.high-contrast .easter-panel,
+body.high-contrast .easter-panel h3,
+body.high-contrast .easter-panel p {
+    color: #fff !important;
+}
+
+body.high-contrast,
+body.high-contrast .container,
+body.high-contrast .project-card,
+body.high-contrast .timeline-card,
+body.high-contrast .easter-panel,
+body.high-contrast .accessibility-panel {
+    background: #000 !important;
+}
+
+body.high-contrast .accessibility-panel,
+body.high-contrast .accessibility-panel button,
+body.high-contrast .accessibility-trigger,
+body.high-contrast .theme-toggle,
+body.high-contrast nav a,
+body.high-contrast .tag,
+body.high-contrast .social-links a,
+body.high-contrast .easter-links a,
+body.high-contrast .easter-close {
+    border-color: #fff !important;
+}
+
+body.high-contrast #accessibility-text-size::-webkit-slider-runnable-track,
+body.high-contrast #accessibility-text-size::-moz-range-track {
+    background: #fff;
+}
+
+body.high-contrast #accessibility-text-size::-webkit-slider-thumb,
+body.high-contrast #accessibility-text-size::-moz-range-thumb {
+    border-color: #fff;
+    background: #000;
+}
+
+@media (max-width: 600px) {
+    .accessibility-menu {
+        right: 12px;
+        bottom: 12px;
+    }
 }
