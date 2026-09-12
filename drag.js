@@ -1,21 +1,25 @@
-const canvas = document.getElementById('matrix');
-const ctx = canvas.getContext('2d');
 let matrixColor = '#ff69b4';
+const canvas = document.getElementById('matrix');
+const ctx = canvas ? canvas.getContext('2d') : null;
 
 function resizeCanvas() {
+    if (!canvas) return;
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 }
 
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
+if (canvas) {
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+}
 
 const chars = '01';
 const fontSize = 14;
-let columns = canvas.width / fontSize;
+let columns = canvas ? canvas.width / fontSize : 0;
 let drops = [];
 
 function initDrops() {
+    if (!canvas) return;
     columns = canvas.width / fontSize;
     drops = [];
     for (let i = 0; i < columns; i++) {
@@ -23,10 +27,13 @@ function initDrops() {
     }
 }
 
-initDrops();
-window.addEventListener('resize', initDrops);
+if (canvas) {
+    initDrops();
+    window.addEventListener('resize', initDrops);
+}
 
 function drawMatrix() {
+    if (!canvas || !ctx) return;
     ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -48,7 +55,9 @@ function drawMatrix() {
     }
 }
 
-setInterval(drawMatrix, 35);
+if (canvas) {
+    setInterval(drawMatrix, 35);
+}
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
