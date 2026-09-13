@@ -26,17 +26,34 @@ Glance is another LXC which is a dashboard. I have it set up so that it automati
 ### PiHole 
 [PiHole](https://pi-hole.net/) is a DNS sinkhole; it provides network-wide advertisement blocking. I also have this set up on an LXC, and it provides an amazing dashboard to view all allowed and disallowed traffic and what devices are doing this. I would suggest this project to anyone starting out in the homelabbing world. It provides skills in DNS, LXC, networking, and most importantly gives you privacy from trackers and advertisements across the internet. 
 
+### RustDesk Server 
+[RustDesk](https://rustdesk.com/) is open source remote access software similar to TeamViewer or AnyDesk. It's free and open-source software that can easily be self-hosted, as I do via a Proxmox LXC. I've combined this with a wake-on-LAN bash script on the main server, allowing me to wake my PC from any place and then remote into it. This came in handy, reducing my overall power consumption on my laptop, as all the actual compute from me taking notes or running software could be done on my main PC. However, it had some drawbacks, one being a mismatch of display server, as my main PC has Cinnamon DE which doesn't work well with Wayland at the minute and therefore had to be X11, whereas my laptop has always been Wayland, causing some minor issues with things such as screen tearing.  
+
+### Element Synapse
+[Synapse](https://element.io/en) is an open source Matrix homeserver implementation made by Element, who I also used for the client. It's a decentralised messaging app similar to Discord or Slack but controlled completely by myself, allowing private communication between me and others. In recent times, however, I have been switching to [Fluxer](https://fluxer.app/) as it seems closer to Discord, which I'm used to, but I don't believe it to yet have good self-hosting support.  
+
+### WatchYourLAN 
+[WatchYourLAN](https://github.com/aceberg/WatchYourLAN) is a lightweight webgui-based network IP scanner. 
+
+### Homelable
+[Homelable](https://homelable.net/) is a self-hosted visual canvas for devices and software you use.
+
 ### VMs
 One VM I have is [Nextcloud](https://nextcloud.com/); this VM also is Tailscaled. The best way to describe Nextcloud is as MS Office but privacy-focused and self-hosted; it offers features like video chatting, notes, photo storage, as a NAS, calendar, mail, and contacts. Overall, it's a very powerful piece of tech that I am amazed is FOSS (Free Open Source Software).
 
 Another is [TrueNAS](https://www.truenas.com/), which unsurprisingly is Network Attached Storage. It also has a good UI design, provides RAID for its disks, and is a FOSS alternative to Unraid. If you really care about data storage, this is a good option.
 
-Game servers are also on my homelab; gone are the days of asking others to start the server or paying for an undoubtedly good server, but with less customization. With this, you have full control over everything, from server software to mods, to domain. Everything. And it can run 24/7. Like with everything I've spoken about, there is a certain level of risk involved, especially port forwarding like you'd need for a Minecraft server, but it's quite minimal. Overall, I would suggest reading up on the risks before fully committing to this project. 
+Game servers are also on my homelab; gone are the days of asking others to start the server or paying for an undoubtedly good server, but with less customization. With this, you have full control over everything, from server software to mods, to domain. Everything. And it can run 24/7. Like with everything I've spoken about, there is a certain level of risk involved, especially port forwarding like you'd need for a Minecraft server, but it's quite minimal. Overall, I would suggest reading up on the risks before fully committing to this project.
+
+
 
 ![Diagram](photos/homelabdiagram.png)
 
 ## At what cost?
 The best way I've found to start homelabbing is with old desktops on Facebook Marketplace. I bought 2 desktops for my homelab and combined them; this cost a total of £70: 1 HP Pavilion for £20, and a custom PC for £50. In hindsight, this was a bit over the top and I could have saved some money by buying perhaps a mini ThinkCentre. My homelab consists of 16GB of DDR3 at a reasonable 1600MHz, an Intel i5-3330 (4) @ 3.200GHz, and a GTX 760 (although getting GPU passthrough to work on Proxmox is a pain). Anyone who doesn't pay a flat fee for electricity should probably take that into account too. Most homelabs don't use more than a few pounds per day, but if that is an issue, you can look towards either ARM-based home servers, like Raspberry Pis, or a laptop server, which should lower wattage.
+
+### Update 
+I bought a mini PC which is significantly more powerful, which I use to run Minecraft and game servers that can handle more players.
 
 ___
 

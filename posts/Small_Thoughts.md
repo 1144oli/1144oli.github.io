@@ -39,6 +39,9 @@ ORCS is a system made by my friend Sam which tells us when each person in our ho
 Each of us has a script on our phones which updates the API when we leave or arrive home. For example, on iPhone we use Shortcuts to trigger this automatically.
 
 The data is then displayed on a dot matrix display in our living room, as well as on our phones. This makes it really easy to quickly see who's home at any time.
+
+### Changing to arch linux (13/09/2026)
+I as of 08/09/2026 (British date) I changed my school laptop T480 OS from debian hyprland to arch linux niri+DMS I like Niri+DMS but Im not certain arch is the right call not being able to use .debs or .rpms really doesnt fill me with much confidence.  
 ___
 <a id="note1">1</a>: Discord lag can be fixed by disabling hardware acceleration in Settings -> Advanced -> Hardware Acceleration, but then make sure to use run discord via the dedicated GPU, on mint this is very easy just right click on the app dock (which I think is called the task manager on mint) and click 'run with dedicated GPU'.
 ___
