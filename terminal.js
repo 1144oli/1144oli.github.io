@@ -110,17 +110,24 @@ function initUniversityTimeline(){
         if(lineRect2){
             const endX = relLeft2 + lineWidth2;
             const pad = 8;
-            const marginOffset = 18; 
-            const desired = endX - marginOffset;
+            const desired = endX;
             const gx = Math.max(pad, Math.min(yearsContainer.clientWidth - pad, desired));
             const grad = document.createElement('div');
             grad.className = 'year graduation';
             grad.style.left = gx + 'px';
             grad.style.position = 'absolute';
-            grad.style.transform = 'translateX(-50%)';
+            grad.style.transform = 'translateX(-100%)';
             grad.textContent = 'Graduation';
             grad.setAttribute('title', 'Graduation');
             yearsContainer.appendChild(grad);
+
+            const endMarker = document.querySelector('.timeline-dot.end');
+            if (endMarker) {
+                const endRect = endMarker.getBoundingClientRect();
+                const graduationRect = grad.getBoundingClientRect();
+                const endCenter = endRect.left + endRect.width / 2;
+                grad.style.left = (gx + endCenter - graduationRect.right) + 'px';
+            }
         } else {
             const grad = document.createElement('div');
             grad.className = 'year graduation';

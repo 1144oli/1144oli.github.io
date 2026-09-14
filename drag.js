@@ -191,7 +191,6 @@ function updateMatrixColor() {
 
 function initEasterEggs() {
     const toast = document.getElementById('easter-toast');
-    const profilePic = document.querySelector('.profile-pic');
     const oliHeading = document.querySelector('header h1');
     const konami = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
     let konamiIndex = 0;
@@ -239,7 +238,7 @@ function initEasterEggs() {
     setLightMode(localStorage.getItem('light-mode') === 'on');
 
     if (cveModal) {
-        [profilePic, oliHeading].filter(Boolean).forEach(trigger => {
+        [oliHeading].filter(Boolean).forEach(trigger => {
             trigger.style.cursor = 'pointer';
             trigger.addEventListener('click', () => {
                 cveModal.open();

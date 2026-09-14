@@ -95,12 +95,6 @@ header nav a {
     margin-top: -10px;
 }
 
-header nav .theme-toggle {
-  display: flex;
-  align-items: center;
-  margin-top: -10px;
-}
-
 .blog-header nav {
     margin-top: 0;
 }
@@ -366,4 +360,88 @@ body.high-contrast .image-modal-close {
 
 body.light-mode .image-modal {
   background-color: rgba(244, 244, 244, 0.96);
+}
+
+@media (max-width: 768px) {
+  .blog-header {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .blog-header h1,
+  .blog-header nav,
+  #post-title,
+  #post-date,
+  .blog-content {
+    text-align: center;
+  }
+
+  .blog-header nav {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .blog-header nav a {
+    margin-top: 0;
+  }
+
+  .blog-content {
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+  }
+
+  .blog-content h1 {
+    font-size: 2em;
+  }
+
+  .blog-content h2 {
+    font-size: 1.65em;
+  }
+
+  .blog-content h3 {
+    font-size: 1.3em;
+  }
+
+  .blog-content pre {
+    max-width: 100%;
+    padding: 14px;
+    font-size: 0.85em;
+  }
+
+  .blog-content table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  ul,
+  ol {
+    margin-left: 1.25em;
+  }
+
+  .image-modal-controls {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    justify-content: center;
+    padding: 8px;
+  }
+
+  .image-modal-btn {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    font-size: 16px;
+  }
+
+  .image-modal-close {
+    top: 68px;
+    right: 18px;
+    font-size: 34px;
+  }
+
+  .image-modal-content {
+    max-width: 92%;
+    max-height: 62vh;
+  }
 }
