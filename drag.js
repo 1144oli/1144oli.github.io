@@ -140,6 +140,9 @@ function initAccessibilityMenu() {
                 button.textContent = enabled ? 'Dark mode' : 'Light mode';
             }
         }
+        if (key === 'motion') {
+            window.dispatchEvent(new Event('accessibilityMotionChanged'));
+        }
     };
 
     Object.keys(preferences).forEach(key => {

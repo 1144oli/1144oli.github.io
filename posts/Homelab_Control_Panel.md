@@ -15,7 +15,7 @@ I want to make a simple mock-up display. I will use Excalidraw for this. I want 
 
 ORCS is a system in my house to know when someone is home. We have it displayed on a dot matrix in our living room and on our phones. It was developed by Sam and is an acronym of our names: Oliver, Raya (Sean), Caiden, Sam. We each have scripts on our phones; Caiden and I have iPhones, so we use Shortcuts to know when we leave the house. If you want to know more, there's a section on it in [Small Thoughts](https://cyberoli.uk/posts.html?post=Small_Thoughts).
 
-![mockup](photos/basic.png align=center rotate=0)
+![Mock-up of the homelab control panel layout](photos/basic.png align=center rotate=0)
 
 ### Build log 
 17/04 - I researched ways to do the project. I have not yet decided if I want this to just be a dashboard or if it should have some functionality with a touchscreen, etc.  

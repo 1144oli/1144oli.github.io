@@ -7,7 +7,7 @@ date: 22/11/2025 Last edited on 12/09/2026
 A homelab is a personal server used for learning, experimentation, and most importantly, self-hosting services. In recent years, this has become more and more popular, but especially in the past few months.
 
 The graph below shows the Google Trends data for "homelab" since 2004.  
-![GoogleTrends](/photos/googletrends.png)
+![Google Trends chart showing interest in homelab searches since 2004](/photos/googletrends.png)
 
 ## Why?
 People homelab for lots of different reasons; however, I think the most popular is for freedom: freedom to own your own data and not have it on someone else's computer (the cloud). But really, homelabbing can do a lot more; from hosting your own Minecraft server, to having your own SMB share (like Google Drive), to even having your own MS Office hosted locally (Nextcloud). Everything is yours, you control it, you own it, and (if you set it up right) only you can see it.
@@ -21,7 +21,7 @@ I'll start with the LXCs. LXCs are lightweight containers similar to Docker; the
 ### Glance 
 Glance is another LXC which is a dashboard. I have it set up so that it automatically directs me to the page when opening a new tab in my web browser. It's very customizable, allowing you to change pretty much whatever you want about it.
 
-![Glance dash](photos/readme-main-image.png) 
+![Glance homelab dashboard screenshot](photos/readme-main-image.png)
 
 ### PiHole 
 [PiHole](https://pi-hole.net/) is a DNS sinkhole; it provides network-wide advertisement blocking. I also have this set up on an LXC, and it provides an amazing dashboard to view all allowed and disallowed traffic and what devices are doing this. I would suggest this project to anyone starting out in the homelabbing world. It provides skills in DNS, LXC, networking, and most importantly gives you privacy from trackers and advertisements across the internet. 
@@ -47,7 +47,7 @@ Game servers are also on my homelab; gone are the days of asking others to start
 
 
 
-![Diagram](photos/homelabdiagram.png)
+![Diagram of the homelab's servers and services](photos/homelabdiagram.png)
 
 ## At what cost?
 The best way I've found to start homelabbing is with old desktops on Facebook Marketplace. I bought 2 desktops for my homelab and combined them; this cost a total of £70: 1 HP Pavilion for £20, and a custom PC for £50. In hindsight, this was a bit over the top and I could have saved some money by buying perhaps a mini ThinkCentre. My homelab consists of 16GB of DDR3 at a reasonable 1600MHz, an Intel i5-3330 (4) @ 3.200GHz, and a GTX 760 (although getting GPU passthrough to work on Proxmox is a pain). Anyone who doesn't pay a flat fee for electricity should probably take that into account too. Most homelabs don't use more than a few pounds per day, but if that is an issue, you can look towards either ARM-based home servers, like Raspberry Pis, or a laptop server, which should lower wattage.

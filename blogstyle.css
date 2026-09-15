@@ -5,6 +5,76 @@
     margin-top: 20px;
 }
 
+.breadcrumb {
+  margin-bottom: 20px;
+}
+
+.blog-section-label {
+  font-size: 1.5em;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.post-search-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.post-search {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: #0a0a0a;
+  color: #fff;
+  font: inherit;
+}
+
+.post-search::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.post-search:focus {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.post-search-status {
+  min-height: 1.5em;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.post-snippet mark {
+  background: #fff;
+  color: #0a0a0a;
+  padding: 0 2px;
+}
+
+body.light-mode .post-search-label,
+body.light-mode .post-search-status {
+  color: #111;
+}
+
+body.light-mode .post-search {
+  border-color: #111;
+  background: #fff;
+  color: #111;
+}
+
+body.light-mode .post-search::placeholder {
+  color: rgba(17, 17, 17, 0.6);
+}
+
+body.light-mode .post-search:focus {
+  outline-color: #111;
+}
+
+body.light-mode .post-snippet mark {
+  background: #111;
+  color: #fff;
+}
+
 .blog-content {
     color: #ffb3d9;
     line-height: 1.8;

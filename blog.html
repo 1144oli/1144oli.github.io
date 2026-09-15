@@ -3,7 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Posts | Oli</title>
+        <title>Blog Posts | Oli</title>
+        <meta name="description" content="Browse Oli's posts about Linux, homelabbing, self-hosting, cyber security, and technology.">
+        <link rel="canonical" href="https://cyberoli.uk/blog.html">
+        <link rel="icon" type="image/png" href="photos/discordpfp.png">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Blog Posts | Oli">
+        <meta property="og:description" content="Browse Oli's posts about Linux, homelabbing, self-hosting, cyber security, and technology.">
+        <meta property="og:url" content="https://cyberoli.uk/blog.html">
+        <meta property="og:image" content="https://cyberoli.uk/og.png">
+        <meta property="og:image:alt" content="Oli's cyber security, Linux, and homelab portfolio">
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Blog Posts | Oli",
+            "description": "Oli's posts about Linux, homelabbing, self-hosting, cyber security, and technology.",
+            "url": "https://cyberoli.uk/blog.html",
+            "isPartOf": {
+                "@type": "WebSite",
+                "name": "Oli",
+                "url": "https://cyberoli.uk/"
+            }
+        }
+        </script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="blogstyle.css">
 </head>
@@ -18,6 +41,9 @@
         </header>
 
         <section class="section">
+            <label class="post-search-label" for="post-search">Search posts</label>
+            <input id="post-search" class="post-search" type="search" placeholder="Search by keyword..." autocomplete="off" maxlength="100">
+            <p id="post-search-status" class="post-search-status" aria-live="polite"></p>
             <div id="post-list" class="blog-list"></div>
         </section>
 
@@ -25,5 +51,6 @@
 
     <script src="drag.js"></script>
     <script src="posts.js"></script>
+    <script type="module" src="web-vitals.js"></script>
 </body>
 </html>

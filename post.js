@@ -3,16 +3,38 @@
 const postTitleEl = document.getElementById("post-title");
 const postDateEl = document.getElementById("post-date");
 const postContentEl = document.getElementById("post-content");
+const postBreadcrumbTitleEl = document.getElementById("post-breadcrumb-title");
 
-const post = new URLSearchParams(window.location.search).get("post");
+const requestedPost = new URLSearchParams(window.location.search).get("post");
 
-if (post) {
-    loadPost(post);
+loadAllowedPost(requestedPost);
+
+async function loadAllowedPost(post) {
+    if (!post || !/^[A-Za-z0-9_-]+$/.test(post)) {
+        showPostError();
+        return;
+    }
+
+    try {
+        const response = await fetch("posts/posts.json");
+        if (!response.ok) throw new Error("Could not load post index");
+        const allowedPosts = await response.json();
+        const file = allowedPosts.find(candidate => candidate === post || postSlug(candidate) === post.toLowerCase());
+        if (!file) {
+            showPostError();
+            return;
+        }
+        await loadPost(file);
+    } catch (error) {
+        showPostError();
+    }
 }
 
 async function loadPost(post) {
-    const url = `posts/${post}.md`;
-    const text = await fetch(url).then(r => r.text());
+    const url = `posts/${encodeURIComponent(post)}.md`;
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("Could not load post");
+    const text = await response.text();
 
     const meta = extractMeta(text);
     const content = extractContent(text);
@@ -22,13 +44,101 @@ async function loadPost(post) {
 
     postTitleEl.textContent = title;
     postDateEl.textContent = date;
+    if (postBreadcrumbTitleEl) postBreadcrumbTitleEl.textContent = title;
     document.title = title + " | Oli";
+    const description = `Oli's blog post: ${title}`;
+    const descriptionMeta = document.querySelector('meta[name="description"]');
+    if (descriptionMeta) descriptionMeta.content = description;
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.content = `${title} | Oli`;
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) ogDescription.content = description;
+    const canonicalUrl = `https://cyberoli.uk/posts.html?post=${encodeURIComponent(post)}`;
+    const canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) canonicalLink.href = canonicalUrl;
+    const structuredData = document.getElementById("structured-data");
+    if (structuredData) {
+        structuredData.textContent = JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: title,
+            description,
+            datePublished: parsePostDate(date),
+            url: canonicalUrl,
+            author: {
+                "@type": "Person",
+                name: "Oli",
+                url: "https://cyberoli.uk/"
+            },
+            image: "https://cyberoli.uk/og.png"
+        });
+    }
     // Allow simple image size syntax in markdown:  ![alt](path =400) or ![alt](path =400x300) or percentage ![alt](path =50%)
     // Also support optional rotation: ![alt](path =400 rotate=90)
-        const processed = processImageSizeSyntax(content);
-    postContentEl.innerHTML = marked.parse(processed);
+    const processed = processImageSizeSyntax(content);
+    const rendered = marked.parse(processed);
+    const sanitized = sanitizeRenderedHtml(rendered);
+    sanitized.querySelectorAll("h1").forEach(heading => {
+        const replacement = document.createElement("h2");
+        replacement.replaceChildren(...heading.childNodes);
+        heading.replaceWith(replacement);
+    });
+    postContentEl.replaceChildren(...sanitized.childNodes);
 
     window.dispatchEvent(new Event('postLoaded'));
+}
+
+function postSlug(file) {
+    return file.toLowerCase().replace(/_/g, "-");
+}
+
+function parsePostDate(value) {
+    const match = /^(\d{2})\/(\d{2})\/(\d{4})/.exec(value);
+    return match ? `${match[3]}-${match[2]}-${match[1]}` : undefined;
+}
+
+function showPostError() {
+    postTitleEl.textContent = "Post Not Found";
+    if (postBreadcrumbTitleEl) postBreadcrumbTitleEl.textContent = "Not found";
+    postDateEl.textContent = "";
+    postContentEl.textContent = "That post does not exist.";
+}
+
+function sanitizeRenderedHtml(html) {
+    const parsed = new DOMParser().parseFromString(html, "text/html");
+    const blockedTags = new Set([
+        "base", "embed", "form", "iframe", "link", "meta", "object", "script", "style", "svg"
+    ]);
+    const urlAttributes = new Set(["data-hires", "href", "src"]);
+
+    parsed.body.querySelectorAll("*").forEach(element => {
+        if (blockedTags.has(element.tagName.toLowerCase())) {
+            element.remove();
+            return;
+        }
+
+        [...element.attributes].forEach(attribute => {
+            const name = attribute.name.toLowerCase();
+            const value = attribute.value.trim();
+            if (name.startsWith("on") || name === "srcdoc" || name === "style" || name === "srcset") {
+                element.removeAttribute(attribute.name);
+            } else if (urlAttributes.has(name) && !isSafeUrl(value)) {
+                element.removeAttribute(attribute.name);
+            }
+        });
+    });
+
+    return parsed.body;
+}
+
+function isSafeUrl(value) {
+    if (!value || value.startsWith("#")) return true;
+    try {
+        const url = new URL(value, window.location.href);
+        return url.protocol === "http:" || url.protocol === "https:";
+    } catch (error) {
+        return false;
+    }
 }
 
 function processImageSizeSyntax(md) {

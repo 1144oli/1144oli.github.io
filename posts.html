@@ -3,7 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog | Oli</title>
+        <title>Blog Post | Oli</title>
+        <meta name="description" content="Read Oli's writing about Linux, homelabbing, self-hosting, cyber security, and technology.">
+        <link rel="canonical" href="https://cyberoli.uk/posts.html">
+        <link rel="icon" type="image/png" href="photos/discordpfp.png">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="Blog Post | Oli">
+        <meta property="og:description" content="Read Oli's writing about Linux, homelabbing, self-hosting, cyber security, and technology.">
+        <meta property="og:url" content="https://cyberoli.uk/posts.html">
+        <meta property="og:image" content="https://cyberoli.uk/og.png">
+        <meta property="og:image:alt" content="Oli's cyber security, Linux, and homelab portfolio">
+        <script id="structured-data" type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Blog Post | Oli",
+            "description": "Read Oli's writing about Linux, homelabbing, self-hosting, cyber security, and technology.",
+            "url": "https://cyberoli.uk/posts.html",
+            "author": {
+                "@type": "Person",
+                "name": "Oli",
+                "url": "https://cyberoli.uk/"
+            },
+            "image": "https://cyberoli.uk/og.png"
+        }
+        </script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="blogstyle.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -12,7 +36,7 @@
 <body>
     <div class="container">
         <header class="blog-header">
-            <h1>Blog</h1>
+            <p class="blog-section-label">Blog</p>
             <nav>
                 <a href="index.html">Home</a>
                 <a href="blog.html">All Posts</a>
@@ -20,7 +44,8 @@
         </header>
 
         <section class="section">
-            <h2 id="post-title"></h2>
+            <p class="breadcrumb"><a href="blog.html">Blog Posts</a> / <span id="post-breadcrumb-title">Current post</span></p>
+            <h1 id="post-title"></h1>
             <p id="post-date"></p>
             <div id="post-content" class="blog-content"></div>
         </section>
@@ -30,6 +55,7 @@
     <script src="drag.js"></script>
     <script src="post.js"></script>
     <script src="imageviewer.js"></script>
+    <script type="module" src="web-vitals.js"></script>
 </body>
 </html>
 

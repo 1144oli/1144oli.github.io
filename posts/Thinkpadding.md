@@ -9,7 +9,7 @@ The [Lenovo ThinkPad](https://en.wikipedia.org/wiki/ThinkPad), in my opinion, is
 My daily driver is the ThinkPad T480, widely considered "the last great ThinkPad" due to later models from the T490 onwards having things like soldered RAM or not including a hot-swappable battery, which is something I wanted. I bought a 72mAh battery for my ThinkPad as I wanted to make sure there was absolutely no way of it running out during lectures, which my VivoBook did often due to its <2 hour battery life. Thankfully, checking things like wattage is quite easy, so I wanted to keep the wattage down as much as possible. I went with Debian Hyprland; while XFCE or i3 probably would have been even better for battery life, I thought this was a good enough middle ground. I added a 1 TB NVMe SSD into the ThinkPad (if you do the same, make sure you know the wattage, as some use quite a lot). Overall, my ThinkPad idles around 8–10 watts and can normally last around 6–12 hours, although I could probably stretch it more to around 15 hours if I used some different apps and stopped using Winboat, for example. I am also thinking about changing the screen to an LPFHD panel, which I'm told can be better for wattage. I've also changed the RAM from 12GB 2400MHz RAM to 16GB 2400MHz.
 
 ## Internals
-![Internals](photos/IMG_2572.jpeg =400 align=center rotate=270 hi=photos/IMG_2572.jpeg)
+![Internal components of a ThinkPad](photos/IMG_2572.jpeg =400 align=center rotate=270 hi=photos/IMG_2572.jpeg)
 
 ___
 

@@ -1,7 +1,7 @@
 # Photos of ORCS system
 
 It's the 3/4 people home section
-![Home Screen](photos/photoofhomescreen.jpg)
+![ORCS status display on a phone home screen](photos/photoofhomescreen.jpg)
 
 Look in the bottom right spelling of (ORCS)
-![ORCS](photos/ORCS.jpg)
+![ORCS dot-matrix home presence display](photos/ORCS.jpg)
