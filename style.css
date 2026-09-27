@@ -634,6 +634,36 @@ body.light-mode .timeline-current {
     z-index: 11000;
 }
 
+.back-to-top {
+    position: fixed;
+    right: 78px;
+    bottom: 18px;
+    z-index: 11000;
+    width: 48px;
+    height: 42px;
+    border: 1px solid currentColor;
+    background: #0a0a0a;
+    color: #fff;
+    font: bold 22px/1 'Courier New', monospace;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+    background: #fff;
+    color: #0a0a0a;
+}
+
 .accessibility-trigger {
     width: 48px;
     height: 42px;
@@ -737,6 +767,11 @@ body.light-mode .accessibility-panel {
     color: #111;
 }
 
+body.light-mode .back-to-top {
+    background: #fff;
+    color: #111;
+}
+
 body.light-mode .accessibility-panel button {
     border-color: rgba(0, 0, 0, 0.55);
 }
@@ -756,6 +791,12 @@ body.light-mode .accessibility-panel button:focus-visible,
 body.light-mode .accessibility-panel button.active,
 body.light-mode .accessibility-trigger:hover,
 body.light-mode .accessibility-trigger:focus-visible {
+    background: #111;
+    color: #fff;
+}
+
+body.light-mode .back-to-top:hover,
+body.light-mode .back-to-top:focus-visible {
     background: #111;
     color: #fff;
 }
@@ -862,13 +903,15 @@ body.high-contrast .container,
 body.high-contrast .project-card,
 body.high-contrast .timeline-card,
 body.high-contrast .easter-panel,
-body.high-contrast .accessibility-panel {
+body.high-contrast .accessibility-panel,
+body.high-contrast .back-to-top {
     background: #000 !important;
 }
 
 body.high-contrast .accessibility-panel,
 body.high-contrast .accessibility-panel button,
 body.high-contrast .accessibility-trigger,
+body.high-contrast .back-to-top,
 body.high-contrast nav a,
 body.high-contrast .tag,
 body.high-contrast .social-links a,
@@ -891,6 +934,11 @@ body.high-contrast #accessibility-text-size::-moz-range-thumb {
 @media (max-width: 600px) {
     .accessibility-menu {
         right: 12px;
+        bottom: 12px;
+    }
+
+    .back-to-top {
+        right: 72px;
         bottom: 12px;
     }
 }

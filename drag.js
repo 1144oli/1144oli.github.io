@@ -187,6 +187,33 @@ function initAccessibilityMenu() {
 
 initAccessibilityMenu();
 
+function initBackToTop() {
+    if (document.querySelector('.back-to-top')) return;
+
+    const button = document.createElement('button');
+    button.className = 'back-to-top';
+    button.type = 'button';
+    button.setAttribute('aria-label', 'Back to top');
+    button.textContent = '^';
+    document.body.appendChild(button);
+
+    const updateVisibility = () => {
+        button.classList.toggle('visible', window.scrollY > 240);
+    };
+
+    button.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: document.body.classList.contains('reduced-motion') ? 'auto' : 'smooth'
+        });
+    });
+
+    window.addEventListener('scroll', updateVisibility, { passive: true });
+    updateVisibility();
+}
+
+initBackToTop();
+
 function updateMatrixColor() {
     const computed = getComputedStyle(document.body).getPropertyValue('--matrix-color').trim();
     matrixColor = computed || '#ff69b4';
