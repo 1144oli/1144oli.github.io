@@ -1,6 +1,6 @@
 ---
 title: Why is EVERYONE Homelabbing?
-date: 22/11/2025 Last edited on 12/09/2026
+date: 22/11/2025 Last edited on 2/10/2026
 ---
 
 ## What is Homelabbing?
@@ -52,8 +52,31 @@ Game servers are also on my homelab; gone are the days of asking others to start
 ## At what cost?
 The best way I've found to start homelabbing is with old desktops on Facebook Marketplace. I bought 2 desktops for my homelab and combined them; this cost a total of £70: 1 HP Pavilion for £20, and a custom PC for £50. In hindsight, this was a bit over the top and I could have saved some money by buying perhaps a mini ThinkCentre. My homelab consists of 16GB of DDR3 at a reasonable 1600MHz, an Intel i5-3330 (4) @ 3.200GHz, and a GTX 760 (although getting GPU passthrough to work on Proxmox is a pain). Anyone who doesn't pay a flat fee for electricity should probably take that into account too. Most homelabs don't use more than a few pounds per day, but if that is an issue, you can look towards either ARM-based home servers, like Raspberry Pis, or a laptop server, which should lower wattage.
 
-### Update 
+___
+
+## Update 
+Below will be my homelabbing journey with new ideas and new projects I will be trying!
+
 I bought a mini PC which is significantly more powerful, which I use to run Minecraft and game servers that can handle more players.
+I also have started a [homelab control pannel]() 
+
+#### What is Wazuh? (2/10/2026)
+
+Wazuh is an open-source security monitoring and threat detection platform. It can collect security-related data from computers and servers, analyse it, and report potential problems to a central dashboard.
+
+I’m using Wazuh in my homelab as a centralised way of monitoring my Proxmox servers and other systems. Wazuh agents run on individual machines and send information back to a Wazuh manager, where it can be analysed.
+
+Some of the things Wazuh can monitor include system logs, file integrity, running processes, configuration changes, vulnerabilities and suspicious activity. This makes it useful for both security monitoring and learning about SIEM and endpoint detection concepts.
+
+For my setup, the goal is to have my Proxmox infrastructure continuously reporting security events to a central Wazuh instance rather than having to manually inspect each machine I used a proxmox ubuntu server VM for this.
+
+![Wazuh Home Pannel](/photos/Wazuh.png)
+
+
+#### Ignis
+I've also set up [Ignis](https://github.com/Nystik-gh/ignis), which lets me run Obsidian through a web browser. I've deployed it as an LXC on Proxmox so I can access my Obsidian vault from pretty much anywhere without needing the desktop application. For security, I've put [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/) in front of it as well as Basic Authentication on the website, giving me two layers of authentication before anyone can access the vault. It's another nice example of how I can take software I'd normally run locally and turn it into a self-hosted service in my homelab.
+
+
 
 ___
 
